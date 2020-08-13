@@ -1,2 +1,4 @@
 # HRI-Methodology-Guidelines
-Recommendations for HRI studies
+An interactive version of HRI study chronology and recommendations.
+
+Paper bibtex info: TBA
