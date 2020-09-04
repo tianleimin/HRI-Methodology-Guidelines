@@ -128,7 +128,11 @@ input[type="text"] {
 .hidden {
 	display: none;
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Hypothesis" tags="Design-Phase" position="400,100" size="200,100">You are now at the design phase of your HRI study.
+
+#menu-saves {
+	display: none;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">config.saves.autosave = true;
+</script><tw-passagedata pid="1" name="Hypothesis" tags="Design-Phase" position="400,100" size="200,100">You are now at the design phase of your HRI study.
 
 Hypothesis:
 a) Form hypotheses about the user(s) and the robot(s)
@@ -138,15 +142,15 @@ c) Pre-registration: document the predictions or exploratory objectives and defi
 &lt;hr&gt;
 
 What are your hypotheses? 
-&lt;&lt;textarea &quot;$hypo&quot; &quot;Enter your hypotheses here&quot;&gt;&gt;
+&lt;&lt;textarea &quot;$hypo&quot; $hypo&gt;&gt;
 
 What type of HRI study are you planning to conduct?
-|Level and behavior of autonomy?|&lt;&lt;textbox &quot;$HRI_auto&quot; &quot;not entered&quot;&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_1&quot; class=&quot;hidden&quot;&gt;from manual teleoperation to full autonomy&lt;/div&gt;|
-|What is the nature of information exchange?|&lt;&lt;textbox &quot;$HRI_info&quot; &quot;not entered&quot;&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_2&quot; class=&quot;hidden&quot;&gt;e.g., audio, visual, physical&lt;/div&gt;|
-|What is the role of the human(s)?|&lt;&lt;textbox &quot;$HRI_human&quot; &quot;not entered&quot;&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_3&quot; class=&quot;hidden&quot;&gt;e.g., supervisor, operator, mechanic, bystander, teammate&lt;/div&gt;|
-|What is the role of the robot(s)?|&lt;&lt;textbox &quot;$HRI_robot&quot; &quot;not entered&quot;&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_4&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_4&quot; class=&quot;hidden&quot;&gt;e.g., peer, companion, tutor, tutee&lt;/div&gt;|
+|Level and behavior of autonomy?|&lt;&lt;textbox &quot;$HRI_auto&quot; $HRI_auto&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_1&quot; class=&quot;hidden&quot;&gt;from manual teleoperation to full autonomy&lt;/div&gt;|
+|What is the nature of information exchange?|&lt;&lt;textbox &quot;$HRI_info&quot; $HRI_info&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_2&quot; class=&quot;hidden&quot;&gt;e.g., audio, visual, physical&lt;/div&gt;|
+|What is the role of the human(s)?|&lt;&lt;textbox &quot;$HRI_human&quot; $HRI_human&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_3&quot; class=&quot;hidden&quot;&gt;e.g., supervisor, operator, mechanic, bystander, teammate&lt;/div&gt;|
+|What is the role of the robot(s)?|&lt;&lt;textbox &quot;$HRI_robot&quot; $HRI_robot&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_4&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_4&quot; class=&quot;hidden&quot;&gt;e.g., peer, companion, tutor, tutee&lt;/div&gt;|
 |Tick this box if there will be adaptation, learning, or training of people and robot|&lt;&lt;checkbox &quot;$HRI_adapt&quot; &quot;no adaption&quot; &quot;has adaption&quot;&gt;&gt;|
-|What are features of the task?|&lt;&lt;textbox &quot;$HRI_task&quot; &quot;not entered&quot;&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_5&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_5&quot; class=&quot;hidden&quot;&gt;e.g., high/low risk, high/low cognitive or physical requirements&lt;/div&gt;|
+|What are features of the task?|&lt;&lt;textbox &quot;$HRI_task&quot; $HRI_task&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_5&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_5&quot; class=&quot;hidden&quot;&gt;e.g., high/low risk, high/low cognitive or physical requirements&lt;/div&gt;|
 
 &lt;hr&gt;
 
@@ -157,7 +161,7 @@ b) Match between participants and users, study and application
 
 &lt;hr&gt;
 What is your study context? 
-&lt;&lt;textarea &quot;$context&quot; &quot;not entered&quot;&gt;&gt;
+&lt;&lt;textarea &quot;$context&quot; $context&gt;&gt;
 
 |This step is not applicable to my study|&lt;&lt;checkbox &quot;$context_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
 &lt;hr&gt;
@@ -227,7 +231,7 @@ Bench-marking, open-sourcing data and codes
 This webpage will walk you through the chronology of a typical HRI study, and list recommendations for best practice at different steps.
 
 Please tell us what is the title of your research proposal: 
-&lt;&lt;textbox &quot;$StudyTitle&quot; &quot;Enter the title of your proposal here&quot;&gt;&gt;
+&lt;&lt;textbox &quot;$StudyTitle&quot; $StudyTitle&gt;&gt;
 
 [[Let&#39;s go!-&gt;Flowchart map]]
 </tw-passagedata><tw-passagedata pid="17" name="Design phase" tags="" position="249,101" size="100,100">You have some brilliant ideas and would like to conduct an HRI study to investigate it.
@@ -252,9 +256,9 @@ Time to move on to the analysis phase!
 Not so fast, there are some extra post-study steps you can perform.
 
 [[Next (reproducibility)-&gt;Reproducibility]]
-</tw-passagedata><tw-passagedata pid="22" name="Thanks" tags="" position="951,2299" size="100,100">Thank you for playing!
+</tw-passagedata><tw-passagedata pid="22" name="Thanks" tags="" position="952,2299" size="100,100">Thank you for playing!
 
-Below is a review of the HRI study design you have specified so far, which you can copy to keep a record of your HRI study design at this point. Best of luck with your research!
+Below is a review of the HRI study design you have specified so far, which you can copy or print to keep a record of your HRI study design at this point. Best of luck with your research!
 
 &lt;hr&gt;
 &lt;hr&gt;
@@ -275,13 +279,19 @@ $hypo
 * Apatation and learning: $HRI_adapt
 * Features of the task: $HRI_task
 
-4. Study context ($context_flag)
+4. Study context: $context_flag
 $context
 
 &lt;hr&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="23" name="Flowchart map" tags="" position="150,301" size="100,100">Click a step in the HRI study life cycle to jump there
+&lt;hr&gt;
+
+Generated by HRI study methodology guidelines (version 0.1): 
+https://tianleimin.github.io/HRI-Methodology-Guidelines/</tw-passagedata><tw-passagedata pid="23" name="Flowchart map" tags="" position="150,301" size="100,100">Click a step in the HRI study life cycle to jump there
 
 &lt;&lt;back &quot;Close map and return to where I was&quot;&gt;&gt;
+
+Change the title of your research proposal: 
+&lt;&lt;textbox &quot;$StudyTitle&quot; $StudyTitle&gt;&gt;
 
 &lt;html&gt;
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
