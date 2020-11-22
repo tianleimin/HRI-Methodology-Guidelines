@@ -104,13 +104,19 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 /* Necessary to select only SVG <a> elements, and not also HTML’s.
    See warning below */
 
-svg|g:link, svg|g:visited {
-  cursor: pointer;
-}
-
+/* highlight */
 svg|g:hover, svg|g:active {
-  outline: dotted 1px blue;
+  outline: solid 2px yellow;
   cursor: pointer;
+  fill:yellow
+}
+/* unvisited */
+svg|a:link {
+  fill:black
+}
+/* visited */
+svg|a:visited {
+  fill:gray
 }
 
 input[type="text"] {
@@ -120,7 +126,7 @@ input[type="text"] {
 #passages {
   margin-right: 0em;
   margin-left: 0em;
-  min-width: 50em;
+  min-width: 25em;
   border: 0;
   max-width: none;
 }
@@ -131,18 +137,151 @@ input[type="text"] {
 
 #menu-saves {
 	display: none;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">config.saves.autosave = true;
-</script><tw-passagedata pid="1" name="Hypothesis" tags="Design-Phase" position="400,100" size="200,100">You are now at the design phase of your HRI study.
+}
 
-Hypothesis:
-a) Form hypotheses about the user(s) and the robot(s)
-b) Decide the type of HRI for studying these hypotheses
-c) Pre-registration: document the predictions or exploratory objectives and define independent / dependant variables
+/* Styling and Colours of the Right UI Bar. */
+#right-ui-bar {
+	background-color: #222;
+	border-right: 1px solid #444;
+	text-align: center;
+}
+#right-ui-bar-toggle {
+	font-size: 1.2em;
+	line-height: inherit;
+	color: #eee;
+	background-color: transparent;
+	border: 1px solid #444;
+}
+#right-ui-bar-toggle:before {
+	font-family: tme-fa-icons;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	speak: none;
+}
+
+/* Layout and Positioning of the Right UI Bar. */
+#right-ui-bar {
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	right: 0;
+	width: 40em;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	-webkit-transition: right .2s ease-in;
+	-o-transition: right .2s ease-in;
+	transition: right .2s ease-in;
+}
+#right-ui-bar-tray {
+	position: absolute;
+	top: .2em;
+	left: 0;
+	right: 0;
+}
+#right-ui-bar-toggle {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-left: none;
+	padding: .3em .45em .25em;
+	-webkit-user-select: none;
+}
+#right-ui-bar-toggle:before {
+	content: "\e81e";
+}
+#right-ui-bar-body {
+	height: 90%;
+	height: calc(100% - 2.5em);
+	margin: 2.5em 0;
+	padding: 0 1.5em;
+}
+#right-ui-bar-body {
+	line-height: 1.5;
+	overflow: auto;
+}
+
+#story {
+	margin-right: 40em;
+}
+
+/* Stowing of the Right UI Bar. */
+#right-ui-bar.stowed {
+	right: -37.5em;
+}
+#right-ui-bar.stowed #right-ui-bar-toggle {
+	padding: .3em .55em .25em .35em;
+}
+#right-ui-bar.stowed #right-ui-bar-toggle:before {
+	content: "\e81d";
+}
+#right-ui-bar.stowed #right-ui-bar-body {
+	visibility: hidden;
+	-webkit-transition: visibility .2s step-end;
+	-o-transition: visibility .2s step-end;
+	transition: visibility .2s step-end;
+}
+
+#right-ui-bar.stowed~#story {
+	margin-right: 4.5em;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">config.saves.autosave = true;
+
+/* Create the Right UI Bar.  Swap the two lines below to start stowed instead of unstowed. */
+var $rightUiBar = $('<div id="right-ui-bar"></div>').insertAfter("#ui-bar");
+/* var $rightUiBar = $('<div id="right-ui-bar" class="stowed"></div>').insertAfter("#ui-bar"); */
+
+var rightTray = $rightUiBar.append('<div id="right-ui-bar-tray"><button id="right-ui-bar-toggle" tabindex="0" title="Toggle the Right UI bar" aria-label="Toggle the Right UI bar" type="button"></button></div>');
+
+var rightBody = $rightUiBar.append('<div id="right-ui-bar-body"></div>');
+
+/* Attach the toggle button click. */
+$rightUiBar.find('#right-ui-bar-toggle').ariaClick({
+		label : "Toggle the Right UI bar"
+	}, function () {
+		$rightUiBar.toggleClass('stowed');
+	});
+
+/* Automatically show the contents of the StoryRightSidebar passage in the right-ui-bar-body element. */
+postrender["Display Right Sidebar Contents"] = function (content, taskName) {
+	setPageElement('right-ui-bar-body', 'StoryRightSidebar');
+};
+
+/*
+	To have your code stow the bar use:
+	<<addclass "#right-ui-bar" "stowed">>
+	
+	To unstow the bar use:
+	<<removeclass "#right-ui-bar" "stowed">>
+*/</script><tw-passagedata pid="1" name="Hypothesis" tags="Design-Phase" position="400,99" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Research question and hypothesis&lt;/h3&gt;
+1) A hypothesis is developed to allow experiments that elucidate specific aspects of the research question
+2) A hypothesis is a predictive statement stating how an experimental condition(s) is expected to affect a measured outcome(s)
+3) A good hypothesis should be testable, concise, and name key constructs
+4) When constructing experiment hypotheses for HRI studies, it is useful to consider the various design factors can be altered to affect HRI
+5) To improve rigour, the experimenter may consider registering the hypotheses prior to conducing the study
 
 &lt;hr&gt;
 
 What are your hypotheses? 
 &lt;&lt;textarea &quot;$hypo&quot; $hypo&gt;&gt;
+
+|Tick this box if the venue you are aiming for requires pre-registration of hypotheses|&lt;&lt;checkbox &quot;$pre-registeration&quot; &quot;pre-registration not mandatory&quot; &quot;pre-registration required&quot;&gt;&gt;|
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$hypo_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
+
+[[Next (study context)-&gt;Study context]]
+</tw-passagedata><tw-passagedata pid="2" name="Study context" tags="Design-Phase" position="400,250" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Study context&lt;/h3&gt;
+1) Identify appropriate location, scenario and other context of HRI
+2) Match between participants and users, study and application
+
+&lt;hr&gt;
 
 What type of HRI study are you planning to conduct?
 |Level and behavior of autonomy?|&lt;&lt;textbox &quot;$HRI_auto&quot; $HRI_auto&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_1&quot; class=&quot;hidden&quot;&gt;from manual teleoperation to full autonomy&lt;/div&gt;|
@@ -151,112 +290,319 @@ What type of HRI study are you planning to conduct?
 |What is the role of the robot(s)?|&lt;&lt;textbox &quot;$HRI_robot&quot; $HRI_robot&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_4&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_4&quot; class=&quot;hidden&quot;&gt;e.g., peer, companion, tutor, tutee&lt;/div&gt;|
 |Tick this box if there will be adaptation, learning, or training of people and robot|&lt;&lt;checkbox &quot;$HRI_adapt&quot; &quot;no adaption&quot; &quot;has adaption&quot;&gt;&gt;|
 |What are features of the task?|&lt;&lt;textbox &quot;$HRI_task&quot; $HRI_task&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_5&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_5&quot; class=&quot;hidden&quot;&gt;e.g., high/low risk, high/low cognitive or physical requirements&lt;/div&gt;|
-
-&lt;hr&gt;
-
-[[Next (study context)-&gt;Study context]]
-</tw-passagedata><tw-passagedata pid="2" name="Study context" tags="Design-Phase" position="400,250" size="200,100">Study Context:
-a) Identify appropriate location, scenario and other context of HRI
-b) Match between participants and users, study and application
-
-&lt;hr&gt;
-What is your study context? 
-&lt;&lt;textarea &quot;$context&quot; $context&gt;&gt;
+|Other context not specified above?|&lt;&lt;textbox &quot;$context&quot; $context&gt;&gt;|
 
 |This step is not applicable to my study|&lt;&lt;checkbox &quot;$context_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
 &lt;hr&gt;
 
 [[Next (study model)-&gt;Study model]]
-</tw-passagedata><tw-passagedata pid="3" name="Study model" tags="Design-Phase" position="400,399" size="200,100">Study Model:
-a) Within subject, between subject, or mixed model
-b) Baseline and control, randomization method, single / double blind
-c) Sample size, power analysis, sampling procedure, retention rate
+</tw-passagedata><tw-passagedata pid="3" name="Study model" tags="Design-Phase" position="400,399" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Study model&lt;/h3&gt;
+1) &#39;&#39;Within-group designs&#39;&#39;: best used when researchers want to evaluate a measure across multiple time points, or test the effects of different conditions. It is best used with limited sample size. Researchers must note the possibility of sequence effects, fatigue and practice effects.
+2) &#39;&#39;Between-group designs&#39;&#39;: best used when researchers want to test the difference between two conditions, behaviours or tasks, and they do not want participants to be influenced by similar conditions. The design can strongly identify effects across-groups compared to within-group. Between-subjects design requires a larger sample size to produce statistically significant results.
+3) &#39;&#39;Mixed-Model designs&#39;&#39;: best used when researchers are seeking to assess both between and within-group effects. Mixed-model designs require a larger sample size and more research skill to implement correctly, but produce rigorous results.
+4) &#39;&#39;Control conditions&#39;&#39;: help to provide a comparison for the research condition of interest. In HRI studies, there are many options to benchmark the robot performance. A control may not be necessary in an initial study, but later studies that are looking to substantiate the claims in more detail should consider using one.
+
+&lt;hr&gt;
+
+Which study model are you planning to use?
+  &lt;&lt;radiobutton &quot;$model&quot; &quot;Within-group design&quot;&gt;&gt; Within-group design
+  &lt;&lt;radiobutton &quot;$model&quot; &quot;Between-group design&quot;&gt;&gt; Between-group design
+  &lt;&lt;radiobutton &quot;$model&quot; &quot;Mixed model design&quot;&gt;&gt; Mixed model design
+
+What are the control conditions?
+&lt;&lt;textarea &quot;$model_con&quot; $model_con&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$model_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (design of evaluation methods)-&gt;Design of evaluation methods]]
-</tw-passagedata><tw-passagedata pid="4" name="Design of evaluation methods" tags="Design-Phase" position="400,549" size="200,100">Design of evaluation methods:
-a) Constructs and methods: Self assessment, behavioral observation, psycho-physiological measures, interviews, task performance metrics
-b) Values: questionnaires, Likert scale, semantic differential scale, continuous or discrete, ordinal or interval
+</tw-passagedata><tw-passagedata pid="4" name="Design of evaluation methods" tags="Design-Phase" position="400,549" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Design of evaluation methods&lt;/h3&gt;
+1) &#39;&#39;Task performance metrics&#39;&#39; should not be used alone to substantiate claims about the entire HRI experience.
+2) &#39;&#39;Behavioural measurements&#39;&#39; quantify human-related constructs. When using these measurements, psychology effects should be taken into account and sufficient training should be given to the raters. 
+3) &#39;&#39;Psychophysiological measurements&#39;&#39; give detailed information about the participant’s internal state. They require significant expertise. Researchers should complete relevant training before using it in trial.
+4)  &#39;&#39;Interviews&#39;&#39; are useful when researchers are interested in developing a deeper understanding of participants&#39; responses during the experiment. Best practice is to use a research team member not invested in the final outcome of the study to conduct the interview to avoid unconscious bias towards reporting of experiences that are more favourable towards the intended outcome. 
+5) &#39;&#39;Self-assessments data&#39;&#39; are often collected through the use of surveys and questionnaires. Similar to interviews, self-assessments can also be influenced by various human factors. 
+6) &#39;&#39;The design of a questionnaire&#39;&#39; involves selecting the what to measure and how to measure them. Psychometric validation is lengthy, complex and time-consuming. Researchers should carefully consider the need to create a new scale, and investigate other literature for suitability. 
+7) &#39;&#39;Metric reliability&#39;&#39; captures the quality of the data with respect to measurement errors. Test-retest reliability, internal consistency reliability, inter-rater reliability, and intra-rater reliability are the common measures that are applicable to HRI studies.
+8) &#39;&#39;Validity&#39;&#39; is the extent to which the data-gathering tool measures the intended measurement. Face validity, content validity, and criterion validity are three important metrics to consider when exploring metric validity in the HRI setting.
+
+&lt;hr&gt;
+
+What evaluation methods are you planning to adopt?
+|Task performance metrics:|&lt;&lt;textbox &quot;$eva_task&quot; $eva_task&gt;&gt;|
+|Behavioural measurements:|&lt;&lt;textbox &quot;$eva_beh&quot; $eva_beh&gt;&gt;|
+|Psychophysiological measurements:|&lt;&lt;textbox &quot;$eva_psy&quot; $eva_psy&gt;&gt;|
+|Interviews:|&lt;&lt;checkbox &quot;$eva_int&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Self-assessments:|&lt;&lt;textbox &quot;$eva_sel&quot; $eva_sel&gt;&gt;|
+|Custom questionnaires:|&lt;&lt;checkbox &quot;$eva_que&quot; &quot;no questionnaires or only standard questionnaires&quot; &quot;custom questionnaires will be used (check their validity)&quot;&gt;&gt;|
+|Other methods not specified above:|&lt;&lt;textbox &quot;$eva_oth&quot; $eva_oth&gt;&gt;|
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cons_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (selection of tools, equipment, and locations)-&gt;Selection of tools and Equipment]]
-</tw-passagedata><tw-passagedata pid="5" name="Selection of tools and Equipment" tags="Design-Phase" position="400,698" size="200,100">Selection of tools and Equipment
+</tw-passagedata><tw-passagedata pid="5" name="Selection of tools and Equipment" tags="Design-Phase" position="401,698" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Selection of tools, equipment, and locations&lt;/h3&gt;
+Selection of tools and Equipment
+1) HRI studies can take place in the laboratory, in public, or online. Researchers should select the location that is appropriate to the hypothesis under investigation. They can also work incrementally, by first conducting studies in the laboratory then moving towards a more realistic setting. 
+2) When possible and feasible, it is best to use robot techniques and behaviours in trial that a robot can deliver on its own to avoid deception or assessment of effects that are not yet achievable. Instead, wizard of Oz is best used if the researcher must evaluate a technique that cannot be delivered on its own for the purpose of theoretical exploration, or the researcher is using the robot as an intentional avatar for experiments.
+
+&lt;hr&gt;
+
+Where do you plan to conduct the experiments?
+|Lab testing:|&lt;&lt;checkbox &quot;$loc_lab&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Field testing:|&lt;&lt;checkbox &quot;$loc_fie&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Online testing:|&lt;&lt;checkbox &quot;$loc_onl&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+
+What is the frequency and duration of each session?
+&lt;&lt;textbox &quot;$loc_fre&quot; $loc_fre&gt;&gt;
+
+Which robot(s) are you using?
+&lt;&lt;textbox &quot;$loc_rob&quot; $loc_rob&gt;&gt;
+
+Which task(s) will the robot(s) and participants perform?
+&lt;&lt;textbox &quot;$loc_tas&quot; $loc_tas&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$loc_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (failure and contingencies)-&gt;Failure and contingencies]]
-</tw-passagedata><tw-passagedata pid="6" name="Failure and contingencies" tags="Design-Phase" position="400,848" size="200,100">Plan for failures and contingencies:
-a) Errors and mitigation or contingency plans
-b) Backup and redundancy, expert supervision or intervention
+</tw-passagedata><tw-passagedata pid="6" name="Failure and contingencies" tags="Design-Phase" position="400,848" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Failures and contingencies&lt;/h3&gt;
+Planning for failure is important due to the dynamic nature of experiments involving human participants. The best approach is to perform multiple test runs prior to the start of the experiment to minimise the risk of potential challenges and failures, by being able to identify them before participant recruitment. Researchers may choose to use a small sub sample of participants that are discarded from the final analysis (e.g., the first 3 test runs with live participants) or request other staff to complete the session without collecting their data formally in the experiment.
+Common sources of errors and bias:
+1) Inappropriate, inaccurate, or incorrectly configured measurement instruments
+2) Inappropriate or unclear experimental procedures
+3) Characteristics of the participants
+4) Non-intended robot errors due to lack of technical robustness and functionality
+
+&lt;hr&gt;
+
+What errors or failures may occur in your study?
+&lt;&lt;textarea &quot;$err_fai&quot; $err_fai&gt;&gt;
+
+How do you plan to recover from or prevent the above failures?
+&lt;&lt;textarea &quot;$err_rec&quot; $err_rec&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$err_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (participants)-&gt;Participants]]
-</tw-passagedata><tw-passagedata pid="7" name="Participants" tags="Design-Phase" position="400,999" size="200,100">Decide on methods of participant / observer recruitment and training
+</tw-passagedata><tw-passagedata pid="7" name="Participants" tags="Design-Phase" position="400,999" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Methods of participant / observer recruitment and training&lt;/h3&gt;
+1) Balancing potential confounding variables can help with noises introduced by the participant selection process, especially when non-random sampling techniques are used
+2) Simple randomization such as a coin toss or random number generator can be used for a large number of participants, but should not be used for a small participant group
+3) Blinding should be reported. Allocation concealment is an important step for demonstrating that the experiment is not influenced by the researcher&#39;s bias.
+4) Each recruitment platform comes with different advantages and trade-offs. Researchers need to consider the platform in relation to the participants relevant to the HRI study. Suitable incentivization can be provided given that it does not affect the participant’s consent
+5) Participant retention is important especially in longitudinal studies and participant drop-out should be reported
+6)  Participant preparation, such as training for teleoperators, should be noted in the study. Researchers should devise strategies to ensure that the participants are sufficiently trained
+
+&lt;hr&gt;
+
+Who are your participants? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_1&quot; class=&quot;hidden&quot;&gt;observers, WoZ operators, teleoperators, confederates&lt;/div&gt;
+&lt;&lt;textarea &quot;$par_who&quot; $par_who&gt;&gt;
+
+What is the selection process? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_2&quot; class=&quot;hidden&quot;&gt;sampling, randomization, blinding and allocation concealment&lt;/div&gt;
+&lt;&lt;textarea &quot;$par_sel&quot; $par_sel&gt;&gt;
+
+How will you recruit the participants?
+|Contacts:|&lt;&lt;checkbox &quot;$par_con&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Community groups, professional organizations:|&lt;&lt;checkbox &quot;$par_com&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Mailing list:|&lt;&lt;checkbox &quot;$par_mai&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Volunteer banks:|&lt;&lt;checkbox &quot;$par_vol&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Crowd-sourcing platforms:|&lt;&lt;checkbox &quot;$par_cro&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+
+What preparation or training will you provide the participants with? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_3&quot; class=&quot;hidden&quot;&gt;information, training, rater agreement&lt;/div&gt;
+&lt;&lt;textarea &quot;$par_tra&quot; $par_tra&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$par_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (study protocol and ethics)-&gt;Study protocol and ethics approval]]
-</tw-passagedata><tw-passagedata pid="8" name="Study protocol and ethics approval" tags="Design-Phase" position="401,1149" size="200,100">Prepare a document that records your study protocol and apply for ethics approval
+</tw-passagedata><tw-passagedata pid="8" name="Study protocol and ethics approval" tags="Design-Phase" position="401,1149" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+&lt;h3&gt;Study protocol and ethics approval&lt;/h3&gt;
+1) Participant privacy should be maintained through data anonymization and data management
+2) Informed consent may not be possible for WoZ studies. Appropriate procedures need to be put in place to debrief the participants after the study
+3) Given HRI is an emerging field, there are many long term consequences of the experience that are unknown. Considerations need to be given to all possible participants, from interactors such as children vulnerable groups, to the researchers participating in the study
+
+&lt;hr&gt;
+
+Ethics approval received:&lt;&lt;checkbox &quot;$eth_app&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$eth_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (piloting)-&gt;Conduct pilots to refine study design]]
-</tw-passagedata><tw-passagedata pid="9" name="Conduct pilots to refine study design" tags="Design-phase Experiment-Phase" position="201,1300" size="200,100">Conduct pilots to refine study design.
+</tw-passagedata><tw-passagedata pid="9" name="Conduct pilots to refine study design" tags="Design-phase Experiment-Phase" position="201,1300" size="200,100">&lt;h2&gt;Design Phase / Experiment Phase&lt;/h2&gt;
+&lt;h3&gt;Conduct pilots to refine study design&lt;/h3&gt;
+In addition to the careful design and planning of a research study, researchers should aim to conduct a good pilot study prior to the main study. This will help them identify critical problems and deficiencies in the study protocol as well as plan and take all the corrective actions
+
+&lt;hr&gt;
+
+Pilot studies conducted: &lt;&lt;checkbox &quot;$pil&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$pil_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 Are you happy with the study deign after seeing the pilot?
 [[Yes-&gt;Experiment phase]]
 [[No-&gt;Hypothesis]]
-</tw-passagedata><tw-passagedata pid="10" name="Conduct study" tags="Experiment-Phase" position="401,1600" size="200,100">Conduct study
+</tw-passagedata><tw-passagedata pid="10" name="Conduct study" tags="Experiment-Phase" position="401,1600" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
+&lt;h3&gt;Conduct study&lt;/h3&gt;
+Follow your designed methods to conduct the study
+[[Review study models-&gt;Study model]]
+
+&lt;hr&gt;
+
+Experiments conducted: &lt;&lt;checkbox &quot;$cond&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Notes on the experimental process:
+&lt;&lt;textarea &quot;$cond_note&quot; $cond_note&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cond_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (collect measurements)-&gt;Collect measurements]]
-</tw-passagedata><tw-passagedata pid="11" name="Collect measurements" tags="Experiment-Phase" position="401,1750" size="200,100">Collect measurements:
-a) Perception or reaction, subjective measures or objective measures
-b) Observer training, observer errors and inter-rater agreement
+</tw-passagedata><tw-passagedata pid="11" name="Collect measurements" tags="Experiment-Phase" position="401,1750" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
+&lt;h3&gt;Collect measurements&lt;/h3&gt;
+Follow your designed methods to collect data
+[[Review evaluation methods-&gt;Design of evaluation methods]]
+
+&lt;hr&gt;
+
+Data collected: &lt;&lt;checkbox &quot;$col&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Notes on the data collection process:
+&lt;&lt;textarea &quot;$col_note&quot; $col_note&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$col_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (analysis phase)-&gt;Analysis phase]]
-</tw-passagedata><tw-passagedata pid="12" name="Data annotation and processing" tags="Analysis-Phase" position="400,1949" size="200,100">You are now at the analysis phase of your HRI study
+</tw-passagedata><tw-passagedata pid="12" name="Data annotation and processing" tags="Analysis-Phase" position="400,1949" size="200,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
+&lt;h3&gt;Data annotation and processing&lt;/h3&gt;
+Data cleaning and post-processing is an important step prior to data analysis, since the validity and generalizability of the observations and conclusions made in a study strongly depend on the quality of the data being analyzed. Researchers should formulate a set of predefined rules for dealing with data errors, and missing or extreme values beforehand. It is also important to provide detailed documentation of all the data-cleaning methods employed, the types and sources of error identified in
+the data as well as the excluded data and the reasons for exclusion
+# Data cleaning: screening, diagnosis, editing
+# Data visualization
+# Small sample size studies: use the right statistical tests and visualization
+# Measurement scales
 
-Data annotation and processing:
-Modalities, preprocessing data based on sensor fidelity and accuracy, biases in human and in data
+&lt;hr&gt;
+
+Small sample? &lt;&lt;checkbox &quot;$ann_sml&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Data cleaning performed: &lt;&lt;checkbox &quot;$ann_cl&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Data visualization performed: &lt;&lt;checkbox &quot;$ann_viz&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Notes on data annotation and processing:
+&lt;&lt;textarea &quot;$ann_note&quot; $ann_note&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ann_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (evaluation)-&gt;Evaluate and analyse hypotheses]]
-</tw-passagedata><tw-passagedata pid="13" name="Evaluate and analyse hypotheses" tags="Analysis-Phase" position="400,2099" size="200,100">Evaluate and analyse hypotheses:
-a) Statistical analysis, data filtering and preprocessing
-b) Validity of evaluation methods
-c) Convergent validity of multiple evaluation metrics
+</tw-passagedata><tw-passagedata pid="13" name="Evaluate and analyse hypotheses" tags="Analysis-Phase" position="400,2099" size="200,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
+&lt;h3&gt;Evaluate and analyze hypotheses&lt;/h3&gt;
+Researchers should not blindly apply statistical hypotheses tests, such as ANOVA, seeking for statistical significance. For a well-designed experiment, researchers should pay more attention to statistical power analysis that includes the relationship between the sample size and effect size. It is important to not only report p-values, but also, where possible, report confidence intervals and effect sizes
+# Hypothesis testing: standard parametric methods, post-hoc tests and corrections, non-parametric methods, robust statistical methods
+# Confidence interval
+# Bayesian inference methods
+# Regression analysis
+
+&lt;hr&gt;
+
+Which statistical tests are you performing?
+&lt;&lt;textarea &quot;$ana_sta&quot; $ana_sta&gt;&gt;
+Do the analyses align with your hypotheses?
+  &lt;&lt;radiobutton &quot;$model&quot; &quot;yes&quot;&gt;&gt; yes
+  &lt;&lt;radiobutton &quot;$model&quot; &quot;no&quot;&gt;&gt; no
+Notes on data analysis:
+&lt;&lt;textarea &quot;$ana_note&quot; $ana_note&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ana_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (post-study phase)-&gt;Post study phase]]
-</tw-passagedata><tw-passagedata pid="14" name="Reproducibility" tags="Post-study-Phase" position="400,2298" size="200,100">You are now at the post-study phase of your HRI study
+</tw-passagedata><tw-passagedata pid="14" name="Reproducibility" tags="Post-study-Phase" position="400,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
+&lt;h3&gt;Reproducibility&lt;/h3&gt;
+It is important to include all the data necessary to reproduce your results. Consider releasing your data and code for the research community to bench-mark on.
 
-Reproducibility:
-Bench-marking, open-sourcing data and codes
+&lt;hr&gt;
+
+Data released: &lt;&lt;checkbox &quot;$rep_dat&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Code released: &lt;&lt;checkbox &quot;$rep_cod&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rep_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (iterative design and follow-up studies)-&gt;Iterative design and follow-up studies]]
-</tw-passagedata><tw-passagedata pid="15" name="Iterative design and follow-up studies" tags="Post-study-Phase" position="700,2298" size="200,100">Iterative design and follow-up studies
+</tw-passagedata><tw-passagedata pid="15" name="Iterative design and follow-up studies" tags="Post-study-Phase" position="700,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
+&lt;h3&gt;Iterative design and follow-up studies&lt;/h3&gt;
 
-[[The study cycle restarts-&gt;Hypothesis]]
-</tw-passagedata><tw-passagedata pid="16" name="Introduction" tags="no-map" position="100,100" size="100,100">Welcome to the interactive version of the HRI study methodology guidelines!
+&lt;hr&gt;
 
-This webpage will walk you through the chronology of a typical HRI study, and list recommendations for best practice at different steps.
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ite_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
+
+[[The study life cycle restarts-&gt;Hypothesis]]
+</tw-passagedata><tw-passagedata pid="16" name="Introduction" tags="" position="100,100" size="100,100">&lt;h2&gt;Welcome!&lt;/h2&gt;
+Welcome to the interactive version of the HRI study methodology guidelines!
+
+This webpage will walk you through the life cycle of a typical HRI study, and list recommendations for best practice at different steps. You can jump to specific steps through the map on the right side panel
 
 Please tell us what is the title of your research proposal: 
 &lt;&lt;textbox &quot;$StudyTitle&quot; $StudyTitle&gt;&gt;
 
-[[Let&#39;s go!-&gt;Flowchart map]]
-</tw-passagedata><tw-passagedata pid="17" name="Design phase" tags="" position="249,101" size="100,100">You have some brilliant ideas and would like to conduct an HRI study to investigate it.
+[[Let&#39;s go!-&gt;Design phase]]
+</tw-passagedata><tw-passagedata pid="17" name="Design phase" tags="" position="249,101" size="100,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+You have some brilliant ideas and would like to conduct an HRI study to investigate it.
 
-[[Begin the HRI study cycle-&gt;Hypothesis]]
-</tw-passagedata><tw-passagedata pid="18" name="Experiment phase" tags="" position="450,1299" size="100,100">You have a well-established research design now.
-
+[[Begin the HRI study life cycle-&gt;Hypothesis]]
+</tw-passagedata><tw-passagedata pid="18" name="Experiment phase" tags="" position="450,1299" size="100,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
+You have a well-established research design now.
 Time to move on to the experiment phase and conduct your HRI study!
 
 [[Next (recruit participants)-&gt;Recruit Participants]]
-</tw-passagedata><tw-passagedata pid="19" name="Recruit Participants" tags="Experiment-phase" position="400,1451" size="200,100">You are now at the experiment phase of your HRI study.
+</tw-passagedata><tw-passagedata pid="19" name="Recruit Participants" tags="Experiment-phase" position="400,1469" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
+&lt;h3&gt;Recruit participants&lt;/h3&gt;
+Follow your designed methods for recruiting participants
+[[Review recruitment methods-&gt;Participants]]
 
-Recruit Participants
+&lt;hr&gt;
+
+Participants recruited: &lt;&lt;checkbox &quot;$rec&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Notes on the recruitment process:
+&lt;&lt;textarea &quot;$rec_note&quot; $rec_note&gt;&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rec_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+
+&lt;hr&gt;
 
 [[Next (conduct study)-&gt;Conduct study]]
-</tw-passagedata><tw-passagedata pid="20" name="Analysis phase" tags="" position="650,1851" size="100,100">You have now collected all the experimental results.
-
+</tw-passagedata><tw-passagedata pid="20" name="Analysis phase" tags="" position="650,1851" size="100,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
+You have now collected all the experimental results.
 Time to move on to the analysis phase!
 
 [[Next (data annotation and processing)-&gt;Data annotation and processing]]
-</tw-passagedata><tw-passagedata pid="21" name="Post study phase" tags="" position="247,2199" size="100,100">You have now finished the experimental analysis. Time to report on your amazing HRI study!
+</tw-passagedata><tw-passagedata pid="21" name="Post study phase" tags="" position="247,2199" size="100,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
+You have now finished the experimental analysis. Time to report on your amazing HRI study!
 Not so fast, there are some extra post-study steps you can perform.
 
 [[Next (reproducibility)-&gt;Reproducibility]]
-</tw-passagedata><tw-passagedata pid="22" name="Thanks" tags="" position="952,2299" size="100,100">Thank you for playing!
+</tw-passagedata><tw-passagedata pid="22" name="Thanks" tags="" position="952,2299" size="100,100">&lt;h2&gt;Thank you for playing!&lt;/h2&gt;
 
 Below is a review of the HRI study design you have specified so far, which you can copy or print to keep a record of your HRI study design at this point. Best of luck with your research!
 
@@ -265,37 +611,121 @@ Below is a review of the HRI study design you have specified so far, which you c
 Version date: &lt;&lt;set $CurDate = new Date(Date.now())&gt;&gt;
 &lt;&lt;= $CurDate.toLocaleString(&quot;en-UK&quot;, { weekday: &quot;short&quot;, month: &quot;short&quot;, day: &quot;numeric&quot;, year: &quot;numeric&quot;, hour: &quot;numeric&quot;, minute: &quot;2-digit&quot; } )&gt;&gt;
 
+I. Design
 1. Proposal title:
-$StudyTitle
+* $StudyTitle
 
-2. Hypotheses: 
-$hypo
+2. Hypotheses: $hypo_flag
+* Pre-registration of hypotheses: $pre-registeration
+* $hypo
 
-3. Type of HRI study are you planning to conduct:
+3. Type of HRI study and study context: $context_flag
 * Level of autonomy: $HRI_auto
 * Information channel: $HRI_info
 * Role of human(s): $HRI_human
 * Role of robot(s): $HRI_robot
 * Apatation and learning: $HRI_adapt
 * Features of the task: $HRI_task
+* Other contexts: $context
 
-4. Study context: $context_flag
-$context
+4. Study model: $model_flag
+* Study design structure: $model
+* Control conditions: $model_con
+
+5. Design of evaluation methods: $cons_flag
+* Task performance metrics: $eva_task
+* Behavioural measurements: $eva_beh
+* Psychophysiological measurements: $eva_psy
+* Interviews: $eva_int
+* Self-assessments data: $eva_sel
+* Custom questionnaires: $eva_que
+* Other methods: $eva_oth
+
+6. Study tools, equipment, locations: $loc_flag
+* Where do you plan to conduct the experiments?
+** Lab testing: $loc_lab
+** Field testing: $loc_fie
+** Online testing: $loc_onl
+* Frequency and duration of each session: $loc_fre
+* Robot(s) to be used: $loc_rob
+* Task(s) the robot(s) and participants will perform: $loc_tas
+
+7. Failures and contingencies: $err_flag
+Possible failures: $err_fai
+Plan of recovery and prevention: $err_rec
+
+8. Participants: $par_flag
+* Participants: $par_who
+* Selection process: $par_sel
+* Recruitment:
+** Contacts: $par_con
+** Community groups, professional organizations: $par_com
+** Mailing list: $par_mai
+** Volunteer banks: $par_vol
+** Crowd-sourcing platforms: $par_cro
+* Participant training: $par_tra
+
+9. Study protocol and ethics approval: $eth_flag
+* Ethics approval received: $eth_app
+
+10. Piloting: $pil_flag
+* Pilot studies conducted: $pil
+
+II. Experiment
+11. Participant recruitment: $rec_flag
+* Participants recruited: $rec
+* Notes: $rec_note
+
+12. Conduct study: $cond_flag
+* Experiments conducted: $cond
+* Notes: $cond_note 
+
+13. Collect data: $col_flag
+* Data collected: $col
+* Notes: $col_note 
+
+III. Analysis
+14. Data annotation and processing: $ann_flag
+* Small sample size? $ann_sml
+* Data cleaning performed: $ann_cl
+* Data visualization performed: $ann_viz
+* Notes: $ann_note
+
+15. Evaluate and analyze hypothesis: $ana_flag
+Statistical tests: $ana_sta
+Analyses align with hypotheses: $model
+Notes: $ana_note
+
+IV. Post-Study
+16. Reproducibility: $rep_flag
+Data released: $rep_dat
+Code released: rep_cod
+
+17. Iterative design and follow-up studies: $ite_flag
 
 &lt;hr&gt;
 &lt;hr&gt;
 
 Generated by HRI study methodology guidelines (version 0.1): 
-https://tianleimin.github.io/HRI-Methodology-Guidelines/</tw-passagedata><tw-passagedata pid="23" name="Flowchart map" tags="" position="150,301" size="100,100">Click a step in the HRI study life cycle to jump there
+https://tianleimin.github.io/HRI-Methodology-Guidelines/</tw-passagedata><tw-passagedata pid="23" name="StoryCaption" tags="" position="701,99" size="100,100">&lt;img src=&quot;https://seekvectorlogo.com/wp-content/uploads/2018/01/monash-university-vector-logo.png&quot; width=&quot;128&quot;&gt;
 
-&lt;&lt;back &quot;Close map and return to where I was&quot;&gt;&gt;
+[[Full HRI study guidelines paper|https://github.com/tianleimin/HRI-Methodology-Guidelines/blob/master/HRI_Methodology_flowchart.pdf]] 
+
+&lt;hr&gt;
+Title of Research Proposal:
+$StudyTitle
+&lt;hr&gt;
+
+&lt;&lt;button [[End Adventure|Thanks]]&gt;&gt;&lt;&lt;/button&gt;&gt;
+</tw-passagedata><tw-passagedata pid="24" name="StoryRightSidebar" tags="" position="902,99" size="100,100">Click a step in the HRI study life cycle to jump there
+(visited steps are shown in gray but you can always revisit them)
 
 Change the title of your research proposal: 
 &lt;&lt;textbox &quot;$StudyTitle&quot; $StudyTitle&gt;&gt;
 
 &lt;html&gt;
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; width=&quot;500px&quot; height=&quot;auto&quot; viewBox=&quot;0 0 525 1400&quot; version=&quot;1.1&quot;&gt;
+&lt;svg class=&quot;map&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; width=&quot;500px&quot; height=&quot;auto&quot; viewBox=&quot;0 0 525 1400&quot; version=&quot;1.1&quot;&gt;
 &lt;defs&gt;
 &lt;marker id=&quot;arrowhead&quot; markerWidth=&quot;5&quot; markerHeight=&quot;5&quot; refX=&quot;0&quot; refY=&quot;2.5&quot; orient=&quot;auto&quot;&gt;
   &lt;polygon points=&quot;0 0, 5 2.5, 0 5&quot; fill=&quot;blue&quot; /&gt;
@@ -336,116 +766,149 @@ Change the title of your research proposal:
 
 
 &lt;g transform=&quot;translate(50,50)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Hypothesis]]&gt;&gt;&#39;)&quot;&gt;
-		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
+		&lt;rect width=&quot;400&quot; height=&quot;40&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
-		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Hypothesis&lt;/text&gt;
+		&lt;a xlink:href=&quot;#0&quot;&gt;
+		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Research questions and hypothesis&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,125)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Study context]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#1&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Study context&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
  
 &lt;g transform=&quot;translate(50,200)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Study model]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#2&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Study model&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,275)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Design of evaluation methods]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#3&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Design of evaluation methods&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,350)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Selection of tools and Equipment]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#4&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Selection of tools, equipment, and locations&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,425)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Failure and contingencies]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#5&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Failure and contingencies&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,500)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Participants]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#6&quot;&gt;
 		&lt;text font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;
 		  &lt;tspan x=&quot;50%&quot; dy=&quot;0.9em&quot;&gt;Methods of participant or&lt;/tspan&gt;
 		  &lt;tspan x=&quot;50%&quot; dy=&quot;1.1em&quot;&gt;observer recruitment and training&lt;/tspan&gt;
+		  &lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,575)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Study protocol and ethics approval]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#7&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Study protocol and ethics approval&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,650)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Conduct pilots to refine study design]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#8&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Conduct pilots to refine study design&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,725)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Recruit Participants]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#9&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Recruit participants&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,800)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Conduct study]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#10&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Conduct study&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,875)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Collect measurements]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#11&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Collect measurements&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,1000)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Data annotation and processing]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#12&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Data annotation and processing&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,1075)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Evaluate and analyse hypotheses]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#13&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Evaluate and analyse hypotheses&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,1200)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Reproducibility]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#14&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Reproducibility&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
 &lt;g transform=&quot;translate(50,1275)&quot; onclick=&quot;$.wiki(&#39;&lt;&lt;goto [[Iterative design and follow-up studies]]&gt;&gt;&#39;)&quot;&gt;
 		&lt;rect width=&quot;400&quot; height=&quot;50&quot; style=&quot;fill:white;stroke:rgb(0,0,0);stroke-width:1.5;fill-opacity:0;&quot; /&gt;
 		&lt;svg width=&quot;400&quot; height=&quot;50&quot;&gt;
+		&lt;a xlink:href=&quot;#15&quot;&gt;
 		&lt;text x=&quot;50%&quot; y=&quot;50%&quot; font-size=&quot;13pt&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot;&gt;Iterative design and follow-up studies&lt;/text&gt;
+		&lt;/a&gt;
 		&lt;/svg&gt;
 &lt;/g&gt;
 
@@ -480,19 +943,6 @@ Change the title of your research proposal:
 &lt;/svg&gt;
 
 &lt;/html&gt;
-
-&lt;&lt;back &quot;Close map and return to where I was&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="StoryCaption" tags="" position="701,99" size="100,100">&lt;img src=&quot;https://seekvectorlogo.com/wp-content/uploads/2018/01/monash-university-vector-logo.png&quot; width=&quot;128&quot;&gt;
-
-[[Full HRI study guidelines paper|https://github.com/tianleimin/HRI-Methodology-Guidelines/blob/master/HRI_Methodology_flowchart.pdf]] 
-
-&lt;hr&gt;
-Title of Research Proposal:
-$StudyTitle
-&lt;hr&gt;
-
-&lt;&lt;button [[Map Navigation|Flowchart map]]&gt;&gt;&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button [[End Adventure|Thanks]]&gt;&gt;&lt;&lt;/button&gt;&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
