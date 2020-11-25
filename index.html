@@ -211,7 +211,7 @@ input[type="text"] {
 
 /* Stowing of the Right UI Bar. */
 #right-ui-bar.stowed {
-	right: -37.5em;
+	right: -38em;
 }
 #right-ui-bar.stowed #right-ui-bar-toggle {
 	padding: .3em .55em .25em .35em;
@@ -228,7 +228,55 @@ input[type="text"] {
 
 #right-ui-bar.stowed~#story {
 	margin-right: 4.5em;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">config.saves.autosave = true;
+}
+
+/* checkboxPlus widget - Start */
+input[type="checkbox"].cbhidden {
+	display: none;
+}
+input[type="checkbox"] + label.chklabel {
+	padding: 4px 4px 4px 30px;
+	position: relative;
+	user-select: none;
+	cursor: pointer;
+}
+:focus > input[type="checkbox"] + label.chklabel::before {
+	border: #135BCF 2px solid;  /* Bright blue */
+	margin-left: 2px;
+	top: -1px;
+}
+input[type="checkbox"] + label.chklabel::before {
+	padding: 0 3px;
+	height: 15px;
+	width: 11px;
+	background: white;
+	border: 1px solid #999;  /* Gray */
+	border-radius: 5px;
+	content: ' ';
+	color: black;
+	line-height: 150%;
+	position: absolute;
+	text-align: center;
+	transform: translate(-130%, 20%);
+}
+input[type="checkbox"]:checked + label.chklabel::before {
+	content: '\2713';
+	font-weight: bold;
+	font-size: 78.75%;
+}
+input[type="checkbox"]:focus + label.chklabel::before {
+	border: #135BCF 2px solid;  /* Bright blue */
+	margin-left: 1px;
+}
+.chkbox {
+	display: inline-block;
+	margin: 0 10px 0 0;
+	line-height: 150%;
+}
+.chkbox:focus {
+	outline: 2px dotted #135BCF;  /* Bright blue */
+}
+/* checkboxPlus widget - End */</style><script role="script" id="twine-user-script" type="text/twine-javascript">config.saves.autosave = true;
 
 /* Create the Right UI Bar.  Swap the two lines below to start stowed instead of unstowed. */
 var $rightUiBar = $('<div id="right-ui-bar"></div>').insertAfter("#ui-bar");
@@ -256,7 +304,7 @@ postrender["Display Right Sidebar Contents"] = function (content, taskName) {
 	
 	To unstow the bar use:
 	<<removeclass "#right-ui-bar" "stowed">>
-*/</script><tw-passagedata pid="1" name="Hypothesis" tags="Design-Phase" position="400,99" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+*/</script><tw-passagedata pid="1" name="Hypothesis" tags="Design-Phase" position="400,98" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
 &lt;h3&gt;Research question and hypothesis&lt;/h3&gt;
 1) A hypothesis is developed to allow experiments that elucidate specific aspects of the research question
 2) A hypothesis is a predictive statement stating how an experimental condition(s) is expected to affect a measured outcome(s)
@@ -269,11 +317,11 @@ postrender["Display Right Sidebar Contents"] = function (content, taskName) {
 What are your hypotheses? 
 &lt;&lt;textarea &quot;$hypo&quot; $hypo&gt;&gt;
 
-|Tick this box if the venue you are aiming for requires pre-registration of hypotheses|&lt;&lt;checkbox &quot;$pre-registeration&quot; &quot;pre-registration not mandatory&quot; &quot;pre-registration required&quot;&gt;&gt;|
-
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$hypo_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+Tick this box if the venue you are aiming for requires pre-registration of hypotheses. &lt;&lt;checkbox &quot;$preregisteration&quot; &quot;not required&quot; &quot;required&quot; &#96;$preregisteration ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$hypo_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$hypo_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (study context)-&gt;Study context]]
 </tw-passagedata><tw-passagedata pid="2" name="Study context" tags="Design-Phase" position="400,250" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -288,16 +336,16 @@ What type of HRI study are you planning to conduct?
 |What is the nature of information exchange?|&lt;&lt;textbox &quot;$HRI_info&quot; $HRI_info&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_2&quot; class=&quot;hidden&quot;&gt;e.g., audio, visual, physical&lt;/div&gt;|
 |What is the role of the human(s)?|&lt;&lt;textbox &quot;$HRI_human&quot; $HRI_human&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_3&quot; class=&quot;hidden&quot;&gt;e.g., supervisor, operator, mechanic, bystander, teammate&lt;/div&gt;|
 |What is the role of the robot(s)?|&lt;&lt;textbox &quot;$HRI_robot&quot; $HRI_robot&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_4&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_4&quot; class=&quot;hidden&quot;&gt;e.g., peer, companion, tutor, tutee&lt;/div&gt;|
-|Tick this box if there will be adaptation, learning, or training of people and robot|&lt;&lt;checkbox &quot;$HRI_adapt&quot; &quot;no adaption&quot; &quot;has adaption&quot;&gt;&gt;|
+|Tick this box if there will be adaptation, learning, or training of people and robot|&lt;&lt;checkbox &quot;$HRI_adapt&quot; &quot;no adaption&quot; &quot;has adaption&quot; &#96;$HRI_adapt ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 |What are features of the task?|&lt;&lt;textbox &quot;$HRI_task&quot; $HRI_task&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_5&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_5&quot; class=&quot;hidden&quot;&gt;e.g., high/low risk, high/low cognitive or physical requirements&lt;/div&gt;|
 |Other context not specified above?|&lt;&lt;textbox &quot;$context&quot; $context&gt;&gt;|
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$context_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
 
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$context_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$context_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+
 [[Next (study model)-&gt;Study model]]
-</tw-passagedata><tw-passagedata pid="3" name="Study model" tags="Design-Phase" position="400,399" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
+</tw-passagedata><tw-passagedata pid="3" name="Study model" tags="Design-Phase" position="401,399" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
 &lt;h3&gt;Study model&lt;/h3&gt;
 1) &#39;&#39;Within-group designs&#39;&#39;: best used when researchers want to evaluate a measure across multiple time points, or test the effects of different conditions. It is best used with limited sample size. Researchers must note the possibility of sequence effects, fatigue and practice effects.
 2) &#39;&#39;Between-group designs&#39;&#39;: best used when researchers want to test the difference between two conditions, behaviours or tasks, and they do not want participants to be influenced by similar conditions. The design can strongly identify effects across-groups compared to within-group. Between-subjects design requires a larger sample size to produce statistically significant results.
@@ -307,16 +355,16 @@ What type of HRI study are you planning to conduct?
 &lt;hr&gt;
 
 Which study model are you planning to use?
-  &lt;&lt;radiobutton &quot;$model&quot; &quot;Within-group design&quot;&gt;&gt; Within-group design
-  &lt;&lt;radiobutton &quot;$model&quot; &quot;Between-group design&quot;&gt;&gt; Between-group design
-  &lt;&lt;radiobutton &quot;$model&quot; &quot;Mixed model design&quot;&gt;&gt; Mixed model design
+  &lt;&lt;checkbox &quot;$model_within&quot; &quot; &quot; &quot; Within-group design &quot; &#96;$model_within ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Within-group design
+  &lt;&lt;checkbox &quot;$model_between&quot; &quot; &quot; &quot; Between-group design &quot; &#96;$model_between ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Between-group design
+  &lt;&lt;checkbox &quot;$model_mixed&quot; &quot; &quot; &quot; Mixed group design &quot; &#96;$model_mixed ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Mixed group design
 
 What are the control conditions?
 &lt;&lt;textarea &quot;$model_con&quot; $model_con&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$model_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$model_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$model_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (design of evaluation methods)-&gt;Design of evaluation methods]]
 </tw-passagedata><tw-passagedata pid="4" name="Design of evaluation methods" tags="Design-Phase" position="400,549" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -333,17 +381,17 @@ What are the control conditions?
 &lt;hr&gt;
 
 What evaluation methods are you planning to adopt?
-|Task performance metrics:|&lt;&lt;textbox &quot;$eva_task&quot; $eva_task&gt;&gt;|
-|Behavioural measurements:|&lt;&lt;textbox &quot;$eva_beh&quot; $eva_beh&gt;&gt;|
-|Psychophysiological measurements:|&lt;&lt;textbox &quot;$eva_psy&quot; $eva_psy&gt;&gt;|
+|Task performance metrics:|&lt;&lt;textbox &quot;$eva_task&quot; $eva_task&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint3_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint3_1&quot; class=&quot;hidden&quot;&gt;e.g., task completion time, error rate, efficiency, percentage of successful actions&lt;/div&gt;|
+|Behavioural measurements:|&lt;&lt;textbox &quot;$eva_beh&quot; $eva_beh&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint3_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint3_2&quot; class=&quot;hidden&quot;&gt;e.g., audio/video recordings of the experiment which will then be transcribed for analysis&lt;/div&gt;|
+|Psychophysiological measurements:|&lt;&lt;textbox &quot;$eva_psy&quot; $eva_psy&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint3_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint3_3&quot; class=&quot;hidden&quot;&gt;e.g., heart rate, blood pressure, brain activity, skin conductance, muscle activity&lt;/div&gt;|
 |Interviews:|&lt;&lt;checkbox &quot;$eva_int&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
 |Self-assessments:|&lt;&lt;textbox &quot;$eva_sel&quot; $eva_sel&gt;&gt;|
-|Custom questionnaires:|&lt;&lt;checkbox &quot;$eva_que&quot; &quot;no questionnaires or only standard questionnaires&quot; &quot;custom questionnaires will be used (check their validity)&quot;&gt;&gt;|
+|Custom questionnaires:|&lt;&lt;checkbox &quot;$eva_que&quot; &quot;no questionnaires or only standard questionnaires&quot; &quot;custom questionnaires will be used (check their validity)&quot; &#96;$eva_que ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 |Other methods not specified above:|&lt;&lt;textbox &quot;$eva_oth&quot; $eva_oth&gt;&gt;|
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cons_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cons_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$cons_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (selection of tools, equipment, and locations)-&gt;Selection of tools and Equipment]]
 </tw-passagedata><tw-passagedata pid="5" name="Selection of tools and Equipment" tags="Design-Phase" position="401,698" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -355,9 +403,9 @@ Selection of tools and Equipment
 &lt;hr&gt;
 
 Where do you plan to conduct the experiments?
-|Lab testing:|&lt;&lt;checkbox &quot;$loc_lab&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Field testing:|&lt;&lt;checkbox &quot;$loc_fie&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Online testing:|&lt;&lt;checkbox &quot;$loc_onl&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Lab testing:|&lt;&lt;checkbox &quot;$loc_lab&quot; &quot;no&quot; &quot;yes&quot; &#96;$loc_lab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Field testing:|&lt;&lt;checkbox &quot;$loc_fie&quot; &quot;no&quot; &quot;yes&quot; &#96;$loc_lab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Online testing:|&lt;&lt;checkbox &quot;$loc_onl&quot; &quot;no&quot; &quot;yes&quot; &#96;$loc_lab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 What is the frequency and duration of each session?
 &lt;&lt;textbox &quot;$loc_fre&quot; $loc_fre&gt;&gt;
@@ -368,9 +416,9 @@ Which robot(s) are you using?
 Which task(s) will the robot(s) and participants perform?
 &lt;&lt;textbox &quot;$loc_tas&quot; $loc_tas&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$loc_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$loc_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$loc_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (failure and contingencies)-&gt;Failure and contingencies]]
 </tw-passagedata><tw-passagedata pid="6" name="Failure and contingencies" tags="Design-Phase" position="400,848" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -390,9 +438,9 @@ What errors or failures may occur in your study?
 How do you plan to recover from or prevent the above failures?
 &lt;&lt;textarea &quot;$err_rec&quot; $err_rec&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$err_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$err_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$err_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (participants)-&gt;Participants]]
 </tw-passagedata><tw-passagedata pid="7" name="Participants" tags="Design-Phase" position="400,999" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -413,18 +461,18 @@ What is the selection process? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;tog
 &lt;&lt;textarea &quot;$par_sel&quot; $par_sel&gt;&gt;
 
 How will you recruit the participants?
-|Contacts:|&lt;&lt;checkbox &quot;$par_con&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Community groups, professional organizations:|&lt;&lt;checkbox &quot;$par_com&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Mailing list:|&lt;&lt;checkbox &quot;$par_mai&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Volunteer banks:|&lt;&lt;checkbox &quot;$par_vol&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Crowd-sourcing platforms:|&lt;&lt;checkbox &quot;$par_cro&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Contacts:|&lt;&lt;checkbox &quot;$par_con&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_con ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Community groups, professional organizations:|&lt;&lt;checkbox &quot;$par_com&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_com ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Mailing list:|&lt;&lt;checkbox &quot;$par_mai&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_mai ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Volunteer banks:|&lt;&lt;checkbox &quot;$par_vol&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_vol ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Crowd-sourcing platforms:|&lt;&lt;checkbox &quot;$par_cro&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_cro ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 What preparation or training will you provide the participants with? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_3&quot; class=&quot;hidden&quot;&gt;information, training, rater agreement&lt;/div&gt;
 &lt;&lt;textarea &quot;$par_tra&quot; $par_tra&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$par_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$par_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$par_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (study protocol and ethics)-&gt;Study protocol and ethics approval]]
 </tw-passagedata><tw-passagedata pid="8" name="Study protocol and ethics approval" tags="Design-Phase" position="401,1149" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -435,11 +483,11 @@ What preparation or training will you provide the participants with? &lt;&lt;cli
 
 &lt;hr&gt;
 
-Ethics approval received:&lt;&lt;checkbox &quot;$eth_app&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
-
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$eth_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+Ethics approval received: &lt;&lt;checkbox &quot;$eth_app&quot; &quot;no&quot; &quot;yes&quot; &#96;$eth_app ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$eth_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$eth_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (piloting)-&gt;Conduct pilots to refine study design]]
 </tw-passagedata><tw-passagedata pid="9" name="Conduct pilots to refine study design" tags="Design-phase Experiment-Phase" position="201,1300" size="200,100">&lt;h2&gt;Design Phase / Experiment Phase&lt;/h2&gt;
@@ -448,11 +496,11 @@ In addition to the careful design and planning of a research study, researchers 
 
 &lt;hr&gt;
 
-Pilot studies conducted: &lt;&lt;checkbox &quot;$pil&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
-
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$pil_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+Pilot studies conducted: &lt;&lt;checkbox &quot;$pil&quot; &quot;no&quot; &quot;yes&quot; &#96;$pil ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$pil_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$pil_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 Are you happy with the study deign after seeing the pilot?
 [[Yes-&gt;Experiment phase]]
@@ -464,13 +512,13 @@ Follow your designed methods to conduct the study
 
 &lt;hr&gt;
 
-Experiments conducted: &lt;&lt;checkbox &quot;$cond&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Experiments conducted: &lt;&lt;checkbox &quot;$cond&quot; &quot;no&quot; &quot;yes&quot; &#96;$cond ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on the experimental process:
 &lt;&lt;textarea &quot;$cond_note&quot; $cond_note&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cond_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cond_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$cond_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (collect measurements)-&gt;Collect measurements]]
 </tw-passagedata><tw-passagedata pid="11" name="Collect measurements" tags="Experiment-Phase" position="401,1750" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
@@ -480,13 +528,13 @@ Follow your designed methods to collect data
 
 &lt;hr&gt;
 
-Data collected: &lt;&lt;checkbox &quot;$col&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Data collected: &lt;&lt;checkbox &quot;$col&quot; &quot;no&quot; &quot;yes&quot; &#96;$col ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on the data collection process:
 &lt;&lt;textarea &quot;$col_note&quot; $col_note&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$col_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$col_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$col_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (analysis phase)-&gt;Analysis phase]]
 </tw-passagedata><tw-passagedata pid="12" name="Data annotation and processing" tags="Analysis-Phase" position="400,1949" size="200,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
@@ -500,15 +548,15 @@ the data as well as the excluded data and the reasons for exclusion
 
 &lt;hr&gt;
 
-Small sample? &lt;&lt;checkbox &quot;$ann_sml&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
-Data cleaning performed: &lt;&lt;checkbox &quot;$ann_cl&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
-Data visualization performed: &lt;&lt;checkbox &quot;$ann_viz&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Small sample? &lt;&lt;checkbox &quot;$ann_sml&quot; &quot;no&quot; &quot;yes&quot; &#96;$ann_sml ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Data cleaning performed: &lt;&lt;checkbox &quot;$ann_cl&quot; &quot;no&quot; &quot;yes&quot; &#96;$ann_cl ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Data visualization performed: &lt;&lt;checkbox &quot;$ann_viz&quot; &quot;no&quot; &quot;yes&quot; &#96;$ann_viz ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on data annotation and processing:
 &lt;&lt;textarea &quot;$ann_note&quot; $ann_note&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ann_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ann_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ann_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (evaluation)-&gt;Evaluate and analyse hypotheses]]
 </tw-passagedata><tw-passagedata pid="13" name="Evaluate and analyse hypotheses" tags="Analysis-Phase" position="400,2099" size="200,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
@@ -523,29 +571,28 @@ Researchers should not blindly apply statistical hypotheses tests, such as ANOVA
 
 Which statistical tests are you performing?
 &lt;&lt;textarea &quot;$ana_sta&quot; $ana_sta&gt;&gt;
-Do the analyses align with your hypotheses?
-  &lt;&lt;radiobutton &quot;$model&quot; &quot;yes&quot;&gt;&gt; yes
-  &lt;&lt;radiobutton &quot;$model&quot; &quot;no&quot;&gt;&gt; no
 Notes on data analysis:
 &lt;&lt;textarea &quot;$ana_note&quot; $ana_note&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ana_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
 
-[[Next (post-study phase)-&gt;Post study phase]]
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ana_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ana_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+
+Do the analyses align with your hypotheses?
+[[Yes. Continue to post-study phase-&gt;Post study phase]]
+[[No. Don&#39;t worry, let&#39;s review your hypotheses-&gt;Hypothesis]]
 </tw-passagedata><tw-passagedata pid="14" name="Reproducibility" tags="Post-study-Phase" position="400,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
 &lt;h3&gt;Reproducibility&lt;/h3&gt;
 It is important to include all the data necessary to reproduce your results. Consider releasing your data and code for the research community to bench-mark on.
 
 &lt;hr&gt;
 
-Data released: &lt;&lt;checkbox &quot;$rep_dat&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
-Code released: &lt;&lt;checkbox &quot;$rep_cod&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
-
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rep_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
+Data released: &lt;&lt;checkbox &quot;$rep_dat&quot; &quot;no&quot; &quot;yes&quot; &#96;$rep_dat ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Code released: &lt;&lt;checkbox &quot;$rep_cod&quot; &quot;no&quot; &quot;yes&quot; &#96;$rep_cod ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rep_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$rep_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (iterative design and follow-up studies)-&gt;Iterative design and follow-up studies]]
 </tw-passagedata><tw-passagedata pid="15" name="Iterative design and follow-up studies" tags="Post-study-Phase" position="700,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
@@ -553,12 +600,10 @@ Code released: &lt;&lt;checkbox &quot;$rep_cod&quot; &quot;no&quot; &quot;yes&qu
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ite_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
-&lt;hr&gt;
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ite_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ite_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[The study life cycle restarts-&gt;Hypothesis]]
-</tw-passagedata><tw-passagedata pid="16" name="Introduction" tags="" position="100,100" size="100,100">&lt;h2&gt;Welcome!&lt;/h2&gt;
+[[End adventure and generate summary-&gt;Thanks]]</tw-passagedata><tw-passagedata pid="16" name="Introduction" tags="" position="100,100" size="100,100">&lt;h2&gt;Welcome!&lt;/h2&gt;
 Welcome to the interactive version of the HRI study methodology guidelines!
 
 This webpage will walk you through the life cycle of a typical HRI study, and list recommendations for best practice at different steps. You can jump to specific steps through the map on the right side panel
@@ -583,13 +628,13 @@ Follow your designed methods for recruiting participants
 
 &lt;hr&gt;
 
-Participants recruited: &lt;&lt;checkbox &quot;$rec&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;
+Participants recruited: &lt;&lt;checkbox &quot;$rec&quot; &quot;no&quot; &quot;yes&quot; &#96;$rec ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on the recruitment process:
 &lt;&lt;textarea &quot;$rec_note&quot; $rec_note&gt;&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rec_flag&quot; &quot;&quot; &quot;not applicable&quot;&gt;&gt;|
-
 &lt;hr&gt;
+
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rec_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$rec_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (conduct study)-&gt;Conduct study]]
 </tw-passagedata><tw-passagedata pid="20" name="Analysis phase" tags="" position="650,1851" size="100,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
@@ -602,9 +647,10 @@ You have now finished the experimental analysis. Time to report on your amazing 
 Not so fast, there are some extra post-study steps you can perform.
 
 [[Next (reproducibility)-&gt;Reproducibility]]
-</tw-passagedata><tw-passagedata pid="22" name="Thanks" tags="" position="952,2299" size="100,100">&lt;h2&gt;Thank you for playing!&lt;/h2&gt;
+</tw-passagedata><tw-passagedata pid="22" name="Thanks" tags="" position="952,2298" size="100,100">&lt;h2&gt;Thank you for playing!&lt;/h2&gt;
 
-Below is a review of the HRI study design you have specified so far, which you can copy or print to keep a record of your HRI study design at this point. Best of luck with your research!
+Below is a review of the HRI study you have specified so far, which you can copy or print to keep a record of your HRI study design at this point (Note: for a better view please hide the left and right side panels before printing)
+Best of luck with your research!
 
 &lt;hr&gt;
 &lt;hr&gt;
@@ -616,7 +662,7 @@ I. Design
 * $StudyTitle
 
 2. Hypotheses: $hypo_flag
-* Pre-registration of hypotheses: $pre-registeration
+* Pre-registration of hypotheses: $preregisteration
 * $hypo
 
 3. Type of HRI study and study context: $context_flag
@@ -629,7 +675,7 @@ I. Design
 * Other contexts: $context
 
 4. Study model: $model_flag
-* Study design structure: $model
+* Study design structure: $model_within $model_between $model_mixed
 * Control conditions: $model_con
 
 5. Design of evaluation methods: $cons_flag
@@ -693,7 +739,6 @@ III. Analysis
 
 15. Evaluate and analyze hypothesis: $ana_flag
 Statistical tests: $ana_sta
-Analyses align with hypotheses: $model
 Notes: $ana_note
 
 IV. Post-Study
@@ -717,7 +762,7 @@ $StudyTitle
 &lt;hr&gt;
 
 &lt;&lt;button [[End Adventure|Thanks]]&gt;&gt;&lt;&lt;/button&gt;&gt;
-</tw-passagedata><tw-passagedata pid="24" name="StoryRightSidebar" tags="" position="902,99" size="100,100">Click a step in the HRI study life cycle to jump there
+</tw-passagedata><tw-passagedata pid="24" name="StoryRightSidebar" tags="" position="903,98" size="100,100">Click a step in the HRI study life cycle to jump there
 (visited steps are shown in gray but you can always revisit them)
 
 Change the title of your research proposal: 
