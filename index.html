@@ -321,7 +321,7 @@ Tick this box if the venue you are aiming for requires pre-registration of hypot
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$hypo_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$hypo_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$hypoflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$hypoflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (study context)-&gt;Study context]]
 </tw-passagedata><tw-passagedata pid="2" name="Study context" tags="Design-Phase" position="400,250" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -332,17 +332,17 @@ Tick this box if the venue you are aiming for requires pre-registration of hypot
 &lt;hr&gt;
 
 What type of HRI study are you planning to conduct?
-|Level and behavior of autonomy?|&lt;&lt;textbox &quot;$HRI_auto&quot; $HRI_auto&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_1&quot; class=&quot;hidden&quot;&gt;from manual teleoperation to full autonomy&lt;/div&gt;|
-|What is the nature of information exchange?|&lt;&lt;textbox &quot;$HRI_info&quot; $HRI_info&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_2&quot; class=&quot;hidden&quot;&gt;e.g., audio, visual, physical&lt;/div&gt;|
-|What is the role of the human(s)?|&lt;&lt;textbox &quot;$HRI_human&quot; $HRI_human&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_3&quot; class=&quot;hidden&quot;&gt;e.g., supervisor, operator, mechanic, bystander, teammate&lt;/div&gt;|
-|What is the role of the robot(s)?|&lt;&lt;textbox &quot;$HRI_robot&quot; $HRI_robot&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_4&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_4&quot; class=&quot;hidden&quot;&gt;e.g., peer, companion, tutor, tutee&lt;/div&gt;|
-|Tick this box if there will be adaptation, learning, or training of people and robot|&lt;&lt;checkbox &quot;$HRI_adapt&quot; &quot;no adaption&quot; &quot;has adaption&quot; &#96;$HRI_adapt ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|What are features of the task?|&lt;&lt;textbox &quot;$HRI_task&quot; $HRI_task&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint1_5&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint1_5&quot; class=&quot;hidden&quot;&gt;e.g., high/low risk, high/low cognitive or physical requirements&lt;/div&gt;|
+|Level and behavior of autonomy?|&lt;&lt;textbox &quot;$HRIauto&quot; $HRIauto&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint11&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint11&quot; class=&quot;hidden&quot;&gt;from manual teleoperation to full autonomy&lt;/div&gt;|
+|What is the nature of information exchange?|&lt;&lt;textbox &quot;$HRIinfo&quot; $HRIinfo&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint12&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint12&quot; class=&quot;hidden&quot;&gt;e.g., audio, visual, physical&lt;/div&gt;|
+|What is the role of the human(s)?|&lt;&lt;textbox &quot;$HRIhuman&quot; $HRIhuman&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint13&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint13&quot; class=&quot;hidden&quot;&gt;e.g., supervisor, operator, mechanic, bystander, teammate&lt;/div&gt;|
+|What is the role of the robot(s)?|&lt;&lt;textbox &quot;$HRIrobot&quot; $HRIrobot&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint14&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint14&quot; class=&quot;hidden&quot;&gt;e.g., peer, companion, tutor, tutee&lt;/div&gt;|
+|Tick this box if there will be adaptation, learning, or training of people and robot|&lt;&lt;checkbox &quot;$HRIadapt&quot; &quot;no adaption&quot; &quot;has adaption&quot; &#96;$HRIadapt ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|What are features of the task?|&lt;&lt;textbox &quot;$HRItask&quot; $HRItask&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint15&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint15&quot; class=&quot;hidden&quot;&gt;e.g., high/low risk, high/low cognitive or physical requirements&lt;/div&gt;|
 |Other context not specified above?|&lt;&lt;textbox &quot;$context&quot; $context&gt;&gt;|
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$context_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$context_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$contextflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$contextflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (study model)-&gt;Study model]]
 </tw-passagedata><tw-passagedata pid="3" name="Study model" tags="Design-Phase" position="401,399" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -355,16 +355,16 @@ What type of HRI study are you planning to conduct?
 &lt;hr&gt;
 
 Which study model are you planning to use?
-  &lt;&lt;checkbox &quot;$model_within&quot; &quot; &quot; &quot; Within-group design &quot; &#96;$model_within ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Within-group design
-  &lt;&lt;checkbox &quot;$model_between&quot; &quot; &quot; &quot; Between-group design &quot; &#96;$model_between ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Between-group design
-  &lt;&lt;checkbox &quot;$model_mixed&quot; &quot; &quot; &quot; Mixed group design &quot; &#96;$model_mixed ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Mixed group design
+  &lt;&lt;checkbox &quot;$modelwithin&quot; &quot; &quot; &quot; Within-group design &quot; &#96;$modelwithin ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Within-group design
+  &lt;&lt;checkbox &quot;$modelbetween&quot; &quot; &quot; &quot; Between-group design &quot; &#96;$modelbetween ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Between-group design
+  &lt;&lt;checkbox &quot;$modelmixed&quot; &quot; &quot; &quot; Mixed group design &quot; &#96;$modelmixed ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt; Mixed group design
 
 What are the control conditions?
-&lt;&lt;textarea &quot;$model_con&quot; $model_con&gt;&gt;
+&lt;&lt;textarea &quot;$modelcon&quot; $modelcon&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$model_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$model_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$modelflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$modelflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (design of evaluation methods)-&gt;Design of evaluation methods]]
 </tw-passagedata><tw-passagedata pid="4" name="Design of evaluation methods" tags="Design-Phase" position="400,549" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -381,17 +381,17 @@ What are the control conditions?
 &lt;hr&gt;
 
 What evaluation methods are you planning to adopt?
-|Task performance metrics:|&lt;&lt;textbox &quot;$eva_task&quot; $eva_task&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint3_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint3_1&quot; class=&quot;hidden&quot;&gt;e.g., task completion time, error rate, efficiency, percentage of successful actions&lt;/div&gt;|
-|Behavioural measurements:|&lt;&lt;textbox &quot;$eva_beh&quot; $eva_beh&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint3_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint3_2&quot; class=&quot;hidden&quot;&gt;e.g., audio/video recordings of the experiment which will then be transcribed for analysis&lt;/div&gt;|
-|Psychophysiological measurements:|&lt;&lt;textbox &quot;$eva_psy&quot; $eva_psy&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint3_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint3_3&quot; class=&quot;hidden&quot;&gt;e.g., heart rate, blood pressure, brain activity, skin conductance, muscle activity&lt;/div&gt;|
-|Interviews:|&lt;&lt;checkbox &quot;$eva_int&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
-|Self-assessments:|&lt;&lt;textbox &quot;$eva_sel&quot; $eva_sel&gt;&gt;|
-|Custom questionnaires:|&lt;&lt;checkbox &quot;$eva_que&quot; &quot;no questionnaires or only standard questionnaires&quot; &quot;custom questionnaires will be used (check their validity)&quot; &#96;$eva_que ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Other methods not specified above:|&lt;&lt;textbox &quot;$eva_oth&quot; $eva_oth&gt;&gt;|
+|Task performance metrics:|&lt;&lt;textbox &quot;$evatask&quot; $evatask&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint31&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint31&quot; class=&quot;hidden&quot;&gt;e.g., task completion time, error rate, efficiency, percentage of successful actions&lt;/div&gt;|
+|Behavioural measurements:|&lt;&lt;textbox &quot;$evabeh&quot; $evabeh&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint32&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint32&quot; class=&quot;hidden&quot;&gt;e.g., audio/video recordings of the experiment which will then be transcribed for analysis&lt;/div&gt;|
+|Psychophysiological measurements:|&lt;&lt;textbox &quot;$evapsy&quot; $evapsy&gt;&gt;|&lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint33&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint33&quot; class=&quot;hidden&quot;&gt;e.g., heart rate, blood pressure, brain activity, skin conductance, muscle activity&lt;/div&gt;|
+|Interviews:|&lt;&lt;checkbox &quot;$evaint&quot; &quot;no&quot; &quot;yes&quot;&gt;&gt;|
+|Self-assessments:|&lt;&lt;textbox &quot;$evasel&quot; $evasel&gt;&gt;|
+|Custom questionnaires:|&lt;&lt;checkbox &quot;$evaque&quot; &quot;no questionnaires or only standard questionnaires&quot; &quot;custom questionnaires will be used (check their validity)&quot; &#96;$evaque ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Other methods not specified above:|&lt;&lt;textbox &quot;$evaoth&quot; $evaoth&gt;&gt;|
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cons_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$cons_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$consflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$consflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (selection of tools, equipment, and locations)-&gt;Selection of tools and Equipment]]
 </tw-passagedata><tw-passagedata pid="5" name="Selection of tools and Equipment" tags="Design-Phase" position="401,698" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -403,22 +403,22 @@ Selection of tools and Equipment
 &lt;hr&gt;
 
 Where do you plan to conduct the experiments?
-|Lab testing:|&lt;&lt;checkbox &quot;$loc_lab&quot; &quot;no&quot; &quot;yes&quot; &#96;$loc_lab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Field testing:|&lt;&lt;checkbox &quot;$loc_fie&quot; &quot;no&quot; &quot;yes&quot; &#96;$loc_lab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Online testing:|&lt;&lt;checkbox &quot;$loc_onl&quot; &quot;no&quot; &quot;yes&quot; &#96;$loc_lab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Lab testing:|&lt;&lt;checkbox &quot;$loclab&quot; &quot;no&quot; &quot;yes&quot; &#96;$loclab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Field testing:|&lt;&lt;checkbox &quot;$locfie&quot; &quot;no&quot; &quot;yes&quot; &#96;$loclab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Online testing:|&lt;&lt;checkbox &quot;$loconl&quot; &quot;no&quot; &quot;yes&quot; &#96;$loclab ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 What is the frequency and duration of each session?
-&lt;&lt;textbox &quot;$loc_fre&quot; $loc_fre&gt;&gt;
+&lt;&lt;textbox &quot;$locfre&quot; $locfre&gt;&gt;
 
 Which robot(s) are you using?
-&lt;&lt;textbox &quot;$loc_rob&quot; $loc_rob&gt;&gt;
+&lt;&lt;textbox &quot;$locrob&quot; $locrob&gt;&gt;
 
 Which task(s) will the robot(s) and participants perform?
-&lt;&lt;textbox &quot;$loc_tas&quot; $loc_tas&gt;&gt;
+&lt;&lt;textbox &quot;$loctas&quot; $loctas&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$loc_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$loc_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$locflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$locflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (failure and contingencies)-&gt;Failure and contingencies]]
 </tw-passagedata><tw-passagedata pid="6" name="Failure and contingencies" tags="Design-Phase" position="400,848" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -433,14 +433,14 @@ Common sources of errors and bias:
 &lt;hr&gt;
 
 What errors or failures may occur in your study?
-&lt;&lt;textarea &quot;$err_fai&quot; $err_fai&gt;&gt;
+&lt;&lt;textarea &quot;$errfai&quot; $errfai&gt;&gt;
 
 How do you plan to recover from or prevent the above failures?
-&lt;&lt;textarea &quot;$err_rec&quot; $err_rec&gt;&gt;
+&lt;&lt;textarea &quot;$errrec&quot; $errrec&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$err_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$err_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$errflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$errflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (participants)-&gt;Participants]]
 </tw-passagedata><tw-passagedata pid="7" name="Participants" tags="Design-Phase" position="400,999" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -454,25 +454,25 @@ How do you plan to recover from or prevent the above failures?
 
 &lt;hr&gt;
 
-Who are your participants? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_1&quot; class=&quot;hidden&quot;&gt;observers, WoZ operators, teleoperators, confederates&lt;/div&gt;
-&lt;&lt;textarea &quot;$par_who&quot; $par_who&gt;&gt;
+Who are your participants? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint21&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint21&quot; class=&quot;hidden&quot;&gt;observers, WoZ operators, teleoperators, confederates&lt;/div&gt;
+&lt;&lt;textarea &quot;$parwho&quot; $parwho&gt;&gt;
 
-What is the selection process? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_2&quot; class=&quot;hidden&quot;&gt;sampling, randomization, blinding and allocation concealment&lt;/div&gt;
-&lt;&lt;textarea &quot;$par_sel&quot; $par_sel&gt;&gt;
+What is the selection process? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint22&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint22&quot; class=&quot;hidden&quot;&gt;sampling, randomization, blinding and allocation concealment&lt;/div&gt;
+&lt;&lt;textarea &quot;$parsel&quot; $parsel&gt;&gt;
 
 How will you recruit the participants?
-|Contacts:|&lt;&lt;checkbox &quot;$par_con&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_con ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Community groups, professional organizations:|&lt;&lt;checkbox &quot;$par_com&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_com ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Mailing list:|&lt;&lt;checkbox &quot;$par_mai&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_mai ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Volunteer banks:|&lt;&lt;checkbox &quot;$par_vol&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_vol ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
-|Crowd-sourcing platforms:|&lt;&lt;checkbox &quot;$par_cro&quot; &quot;no&quot; &quot;yes&quot; &#96;$par_cro ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Contacts:|&lt;&lt;checkbox &quot;$parcon&quot; &quot;no&quot; &quot;yes&quot; &#96;$parcon ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Community groups, professional organizations:|&lt;&lt;checkbox &quot;$parcom&quot; &quot;no&quot; &quot;yes&quot; &#96;$parcom ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Mailing list:|&lt;&lt;checkbox &quot;$parmai&quot; &quot;no&quot; &quot;yes&quot; &#96;$parmai ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Volunteer banks:|&lt;&lt;checkbox &quot;$parvol&quot; &quot;no&quot; &quot;yes&quot; &#96;$parvol ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|Crowd-sourcing platforms:|&lt;&lt;checkbox &quot;$parcro&quot; &quot;no&quot; &quot;yes&quot; &#96;$parcro ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
-What preparation or training will you provide the participants with? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint2_3&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint2_3&quot; class=&quot;hidden&quot;&gt;information, training, rater agreement&lt;/div&gt;
-&lt;&lt;textarea &quot;$par_tra&quot; $par_tra&gt;&gt;
+What preparation or training will you provide the participants with? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint23&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint23&quot; class=&quot;hidden&quot;&gt;information, training, rater agreement&lt;/div&gt;
+&lt;&lt;textarea &quot;$partra&quot; $partra&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$par_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$par_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$parflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$parflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (study protocol and ethics)-&gt;Study protocol and ethics approval]]
 </tw-passagedata><tw-passagedata pid="8" name="Study protocol and ethics approval" tags="Design-Phase" position="401,1149" size="200,100">&lt;h2&gt;Design Phase&lt;/h2&gt;
@@ -483,11 +483,11 @@ What preparation or training will you provide the participants with? &lt;&lt;cli
 
 &lt;hr&gt;
 
-Ethics approval received: &lt;&lt;checkbox &quot;$eth_app&quot; &quot;no&quot; &quot;yes&quot; &#96;$eth_app ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Ethics approval received: &lt;&lt;checkbox &quot;$ethapp&quot; &quot;no&quot; &quot;yes&quot; &#96;$ethapp ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$eth_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$eth_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ethflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ethflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (piloting)-&gt;Conduct pilots to refine study design]]
 </tw-passagedata><tw-passagedata pid="9" name="Conduct pilots to refine study design" tags="Design-phase Experiment-Phase" position="201,1300" size="200,100">&lt;h2&gt;Design Phase / Experiment Phase&lt;/h2&gt;
@@ -500,7 +500,7 @@ Pilot studies conducted: &lt;&lt;checkbox &quot;$pil&quot; &quot;no&quot; &quot;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$pil_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$pil_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$pilflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$pilflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 Are you happy with the study deign after seeing the pilot?
 [[Yes-&gt;Experiment phase]]
@@ -514,11 +514,11 @@ Follow your designed methods to conduct the study
 
 Experiments conducted: &lt;&lt;checkbox &quot;$cond&quot; &quot;no&quot; &quot;yes&quot; &#96;$cond ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on the experimental process:
-&lt;&lt;textarea &quot;$cond_note&quot; $cond_note&gt;&gt;
+&lt;&lt;textarea &quot;$condnote&quot; $condnote&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$cond_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$cond_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$condflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$condflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (collect measurements)-&gt;Collect measurements]]
 </tw-passagedata><tw-passagedata pid="11" name="Collect measurements" tags="Experiment-Phase" position="401,1750" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
@@ -530,11 +530,11 @@ Follow your designed methods to collect data
 
 Data collected: &lt;&lt;checkbox &quot;$col&quot; &quot;no&quot; &quot;yes&quot; &#96;$col ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on the data collection process:
-&lt;&lt;textarea &quot;$col_note&quot; $col_note&gt;&gt;
+&lt;&lt;textarea &quot;$colnote&quot; $colnote&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$col_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$col_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$colflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$colflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (analysis phase)-&gt;Analysis phase]]
 </tw-passagedata><tw-passagedata pid="12" name="Data annotation and processing" tags="Analysis-Phase" position="400,1949" size="200,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
@@ -548,15 +548,15 @@ the data as well as the excluded data and the reasons for exclusion
 
 &lt;hr&gt;
 
-Small sample? &lt;&lt;checkbox &quot;$ann_sml&quot; &quot;no&quot; &quot;yes&quot; &#96;$ann_sml ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
-Data cleaning performed: &lt;&lt;checkbox &quot;$ann_cl&quot; &quot;no&quot; &quot;yes&quot; &#96;$ann_cl ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
-Data visualization performed: &lt;&lt;checkbox &quot;$ann_viz&quot; &quot;no&quot; &quot;yes&quot; &#96;$ann_viz ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Small sample? &lt;&lt;checkbox &quot;$annsml&quot; &quot;no&quot; &quot;yes&quot; &#96;$annsml ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Data cleaning performed: &lt;&lt;checkbox &quot;$anncl&quot; &quot;no&quot; &quot;yes&quot; &#96;$anncl ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Data visualization performed: &lt;&lt;checkbox &quot;$annviz&quot; &quot;no&quot; &quot;yes&quot; &#96;$annviz ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on data annotation and processing:
-&lt;&lt;textarea &quot;$ann_note&quot; $ann_note&gt;&gt;
+&lt;&lt;textarea &quot;$annnote&quot; $annnote&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ann_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ann_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$annflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$annflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (evaluation)-&gt;Evaluate and analyse hypotheses]]
 </tw-passagedata><tw-passagedata pid="13" name="Evaluate and analyse hypotheses" tags="Analysis-Phase" position="400,2099" size="200,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
@@ -570,13 +570,13 @@ Researchers should not blindly apply statistical hypotheses tests, such as ANOVA
 &lt;hr&gt;
 
 Which statistical tests are you performing?
-&lt;&lt;textarea &quot;$ana_sta&quot; $ana_sta&gt;&gt;
+&lt;&lt;textarea &quot;$anasta&quot; $anasta&gt;&gt;
 Notes on data analysis:
-&lt;&lt;textarea &quot;$ana_note&quot; $ana_note&gt;&gt;
+&lt;&lt;textarea &quot;$ananote&quot; $ananote&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ana_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ana_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$anaflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$anaflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 Do the analyses align with your hypotheses?
 [[Yes. Continue to post-study phase-&gt;Post study phase]]
@@ -587,12 +587,12 @@ It is important to include all the data necessary to reproduce your results. Con
 
 &lt;hr&gt;
 
-Data released: &lt;&lt;checkbox &quot;$rep_dat&quot; &quot;no&quot; &quot;yes&quot; &#96;$rep_dat ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
-Code released: &lt;&lt;checkbox &quot;$rep_cod&quot; &quot;no&quot; &quot;yes&quot; &#96;$rep_cod ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Data released: &lt;&lt;checkbox &quot;$repdat&quot; &quot;no&quot; &quot;yes&quot; &#96;$repdat ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
+Code released: &lt;&lt;checkbox &quot;$repcod&quot; &quot;no&quot; &quot;yes&quot; &#96;$repcod ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rep_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$rep_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$repflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$repflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (iterative design and follow-up studies)-&gt;Iterative design and follow-up studies]]
 </tw-passagedata><tw-passagedata pid="15" name="Iterative design and follow-up studies" tags="Post-study-Phase" position="700,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
@@ -600,7 +600,7 @@ Code released: &lt;&lt;checkbox &quot;$rep_cod&quot; &quot;no&quot; &quot;yes&qu
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$ite_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$ite_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$iteflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$iteflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[The study life cycle restarts-&gt;Hypothesis]]
 [[End adventure and generate summary-&gt;Thanks]]</tw-passagedata><tw-passagedata pid="16" name="Introduction" tags="" position="100,100" size="100,100">&lt;h2&gt;Welcome!&lt;/h2&gt;
@@ -621,7 +621,7 @@ You have a well-established research design now.
 Time to move on to the experiment phase and conduct your HRI study!
 
 [[Next (recruit participants)-&gt;Recruit Participants]]
-</tw-passagedata><tw-passagedata pid="19" name="Recruit Participants" tags="Experiment-phase" position="400,1469" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
+</tw-passagedata><tw-passagedata pid="19" name="Recruit Participants" tags="Experiment-phase" position="399,1469" size="200,100">&lt;h2&gt;Experiment Phase&lt;/h2&gt;
 &lt;h3&gt;Recruit participants&lt;/h3&gt;
 Follow your designed methods for recruiting participants
 [[Review recruitment methods-&gt;Participants]]
@@ -630,11 +630,11 @@ Follow your designed methods for recruiting participants
 
 Participants recruited: &lt;&lt;checkbox &quot;$rec&quot; &quot;no&quot; &quot;yes&quot; &#96;$rec ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
 Notes on the recruitment process:
-&lt;&lt;textarea &quot;$rec_note&quot; $rec_note&gt;&gt;
+&lt;&lt;textarea &quot;$recnote&quot; $recnote&gt;&gt;
 
 &lt;hr&gt;
 
-|This step is not applicable to my study|&lt;&lt;checkbox &quot;$rec_flag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$rec_flag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
+|This step is not applicable to my study|&lt;&lt;checkbox &quot;$recflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$recflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (conduct study)-&gt;Conduct study]]
 </tw-passagedata><tw-passagedata pid="20" name="Analysis phase" tags="" position="650,1851" size="100,100">&lt;h2&gt;Analysis Phase&lt;/h2&gt;
@@ -661,92 +661,92 @@ I. Design
 1. Proposal title:
 * $StudyTitle
 
-2. Hypotheses: $hypo_flag
+2. Hypotheses: $hypoflag
 * Pre-registration of hypotheses: $preregisteration
 * $hypo
 
-3. Type of HRI study and study context: $context_flag
-* Level of autonomy: $HRI_auto
-* Information channel: $HRI_info
-* Role of human(s): $HRI_human
-* Role of robot(s): $HRI_robot
-* Apatation and learning: $HRI_adapt
-* Features of the task: $HRI_task
+3. Type of HRI study and study context: $contextflag
+* Level of autonomy: $HRIauto
+* Information channel: $HRIinfo
+* Role of human(s): $HRIhuman
+* Role of robot(s): $HRIrobot
+* Apatation and learning: $HRIadapt
+* Features of the task: $HRItask
 * Other contexts: $context
 
-4. Study model: $model_flag
-* Study design structure: $model_within $model_between $model_mixed
-* Control conditions: $model_con
+4. Study model: $modelflag
+* Study design structure: $modelwithin $modelbetween $modelmixed
+* Control conditions: $modelcon
 
-5. Design of evaluation methods: $cons_flag
-* Task performance metrics: $eva_task
-* Behavioural measurements: $eva_beh
-* Psychophysiological measurements: $eva_psy
-* Interviews: $eva_int
-* Self-assessments data: $eva_sel
-* Custom questionnaires: $eva_que
-* Other methods: $eva_oth
+5. Design of evaluation methods: $consflag
+* Task performance metrics: $evatask
+* Behavioural measurements: $evabeh
+* Psychophysiological measurements: $evapsy
+* Interviews: $evaint
+* Self-assessments data: $evasel
+* Custom questionnaires: $evaque
+* Other methods: $evaoth
 
-6. Study tools, equipment, locations: $loc_flag
+6. Study tools, equipment, locations: $locflag
 * Where do you plan to conduct the experiments?
-** Lab testing: $loc_lab
-** Field testing: $loc_fie
-** Online testing: $loc_onl
-* Frequency and duration of each session: $loc_fre
-* Robot(s) to be used: $loc_rob
-* Task(s) the robot(s) and participants will perform: $loc_tas
+** Lab testing: $loclab
+** Field testing: $locfie
+** Online testing: $loconl
+* Frequency and duration of each session: $locfre
+* Robot(s) to be used: $locrob
+* Task(s) the robot(s) and participants will perform: $loctas
 
-7. Failures and contingencies: $err_flag
-Possible failures: $err_fai
-Plan of recovery and prevention: $err_rec
+7. Failures and contingencies: $errflag
+Possible failures: $errfai
+Plan of recovery and prevention: $errrec
 
-8. Participants: $par_flag
-* Participants: $par_who
-* Selection process: $par_sel
+8. Participants: $parflag
+* Participants: $parwho
+* Selection process: $parsel
 * Recruitment:
-** Contacts: $par_con
-** Community groups, professional organizations: $par_com
-** Mailing list: $par_mai
-** Volunteer banks: $par_vol
-** Crowd-sourcing platforms: $par_cro
-* Participant training: $par_tra
+** Contacts: $parcon
+** Community groups, professional organizations: $parcom
+** Mailing list: $parmai
+** Volunteer banks: $parvol
+** Crowd-sourcing platforms: $parcro
+* Participant training: $partra
 
-9. Study protocol and ethics approval: $eth_flag
-* Ethics approval received: $eth_app
+9. Study protocol and ethics approval: $ethflag
+* Ethics approval received: $ethapp
 
-10. Piloting: $pil_flag
+10. Piloting: $pilflag
 * Pilot studies conducted: $pil
 
 II. Experiment
-11. Participant recruitment: $rec_flag
+11. Participant recruitment: $recflag
 * Participants recruited: $rec
-* Notes: $rec_note
+* Notes: $recnote
 
-12. Conduct study: $cond_flag
+12. Conduct study: $condflag
 * Experiments conducted: $cond
-* Notes: $cond_note 
+* Notes: $condnote 
 
-13. Collect data: $col_flag
+13. Collect data: $colflag
 * Data collected: $col
-* Notes: $col_note 
+* Notes: $colnote 
 
 III. Analysis
-14. Data annotation and processing: $ann_flag
-* Small sample size? $ann_sml
-* Data cleaning performed: $ann_cl
-* Data visualization performed: $ann_viz
-* Notes: $ann_note
+14. Data annotation and processing: $annflag
+* Small sample size? $annsml
+* Data cleaning performed: $anncl
+* Data visualization performed: $annviz
+* Notes: $annnote
 
-15. Evaluate and analyze hypothesis: $ana_flag
-Statistical tests: $ana_sta
-Notes: $ana_note
+15. Evaluate and analyze hypothesis: $anaflag
+Statistical tests: $anasta
+Notes: $ananote
 
 IV. Post-Study
-16. Reproducibility: $rep_flag
-Data released: $rep_dat
-Code released: rep_cod
+16. Reproducibility: $repflag
+Data released: $repdat
+Code released: repcod
 
-17. Iterative design and follow-up studies: $ite_flag
+17. Iterative design and follow-up studies: $iteflag
 
 &lt;hr&gt;
 &lt;hr&gt;
