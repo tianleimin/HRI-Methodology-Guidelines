@@ -126,7 +126,7 @@ input[type="text"] {
 #passages {
   margin-right: 0em;
   margin-left: 0em;
-  min-width: 25em;
+  min-width: 15em;
   border: 0;
   max-width: none;
 }
@@ -461,7 +461,12 @@ $(document).on(":passageend", function (event) {
 4) When constructing experiment hypotheses for HRI studies, it is useful to consider the various design factors can be altered to affect HRI
 5) To improve rigour, the experimenter may consider registering the hypotheses prior to conducing the study
 
+For detailed information and guidelines see [[Section 3.1|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-80003.1]] of the paper.
+
 &lt;hr&gt;
+
+What are your research questions? 
+&lt;&lt;textarea &quot;$rq&quot; $rq&gt;&gt;
 
 What are your hypotheses? 
 &lt;&lt;textarea &quot;$hypo&quot; $hypo&gt;&gt;
@@ -477,6 +482,8 @@ Tick this box if the venue you are aiming for requires pre-registration of hypot
 &lt;h3&gt;Study context&lt;/h3&gt;
 1) Identify appropriate location, scenario and other context of HRI
 2) Match between participants and users, study and application
+
+For detailed information and guidelines see [[Section 3.2|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-90003.2]] of the paper.
 
 &lt;hr&gt;
 
@@ -500,6 +507,8 @@ What type of HRI study are you planning to conduct?
 2) &#39;&#39;Between-group designs&#39;&#39;: best used when researchers want to test the difference between two conditions, behaviours or tasks, and they do not want participants to be influenced by similar conditions. The design can strongly identify effects across-groups compared to within-group. Between-subjects design requires a larger sample size to produce statistically significant results.
 3) &#39;&#39;Mixed-Model designs&#39;&#39;: best used when researchers are seeking to assess both between and within-group effects. Mixed-model designs require a larger sample size and more research skill to implement correctly, but produce rigorous results.
 4) &#39;&#39;Control conditions&#39;&#39;: help to provide a comparison for the research condition of interest. In HRI studies, there are many options to benchmark the robot performance. A control may not be necessary in an initial study, but later studies that are looking to substantiate the claims in more detail should consider using one.
+
+For detailed information and guidelines see [[Section 4.1|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-130004.1]] of the paper.
 
 &lt;hr&gt;
 
@@ -533,6 +542,10 @@ What are the independent variables?
 7) &#39;&#39;Metric reliability&#39;&#39; captures the quality of the data with respect to measurement errors. Test-retest reliability, internal consistency reliability, inter-rater reliability, and intra-rater reliability are the common measures that are applicable to HRI studies.
 8) &#39;&#39;Validity&#39;&#39; is the extent to which the data-gathering tool measures the intended measurement. Face validity, content validity, and criterion validity are three important metrics to consider when exploring metric validity in the HRI setting.
 
+For detailed information and guidelines see [[Section 4.2|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-160004.2]] of the paper.
+
+For a summary of constructs and metrics see [[Table 2|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-18003r2]] of the paper.
+
 &lt;hr&gt;
 
 What evaluation methods are you planning to adopt?
@@ -555,6 +568,8 @@ What evaluation methods are you planning to adopt?
 Selection of tools and Equipment
 1) HRI studies can take place in the laboratory, in public, or online. Researchers should select the location that is appropriate to the hypothesis under investigation. They can also work incrementally, by first conducting studies in the laboratory then moving towards a more realistic setting. 
 2) When possible and feasible, it is best to use robot techniques and behaviours in trial that a robot can deliver on its own to avoid deception or assessment of effects that are not yet achievable. Instead, wizard of Oz is best used if the researcher must evaluate a technique that cannot be delivered on its own for the purpose of theoretical exploration, or the researcher is using the robot as an intentional avatar for experiments.
+
+For detailed information and guidelines see [[Section 4.3|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-200004.3]] of the paper.
 
 &lt;hr&gt;
 
@@ -586,6 +601,8 @@ Common sources of errors and bias:
 3) Characteristics of the participants
 4) Non-intended robot errors due to lack of technical robustness and functionality
 
+For detailed information and guidelines see [[Section 6.2|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-440006.2]] of the paper.
+
 &lt;hr&gt;
 
 What errors or failures may occur in your study?
@@ -608,22 +625,24 @@ How do you plan to recover from or prevent the above failures?
 5) Participant retention is important especially in longitudinal studies and participant drop-out should be reported
 6)  Participant preparation, such as training for teleoperators, should be noted in the study. Researchers should devise strategies to ensure that the participants are sufficiently trained
 
+For detailed information and guidelines see [[Section 5|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-270005]] of the paper.
+
 &lt;hr&gt;
 
-Who are your participants? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint21&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint21&quot; class=&quot;hidden&quot;&gt;observers, WoZ operators, teleoperators, confederates&lt;/div&gt;
+Who are your participants (see [[Section 5.1|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-280005.1]] for more information on participant type)? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint21&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint21&quot; class=&quot;hidden&quot;&gt;observers, WoZ operators, teleoperators, confederates&lt;/div&gt;
 &lt;&lt;textarea &quot;$parwho&quot; $parwho&gt;&gt;
 
-What is the selection process? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint22&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint22&quot; class=&quot;hidden&quot;&gt;sampling, randomization, blinding and allocation concealment&lt;/div&gt;
+What is the selection process (see [[Section 5.2|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-290005.2]] for more information on participant selection)? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint22&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint22&quot; class=&quot;hidden&quot;&gt;sampling, randomization, blinding and allocation concealment&lt;/div&gt;
 &lt;&lt;textarea &quot;$parsel&quot; $parsel&gt;&gt;
 
-How will you recruit the participants?
+How will you recruit the participants (see [[Section 5.3|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-330005.3]] and [[Table 3|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-33001r3]] for more information on participant recruitment)?
 |Contacts:|&lt;&lt;checkbox &quot;$parcon&quot; &quot;no&quot; &quot;yes&quot; &#96;$parcon ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 |Community groups, professional organizations:|&lt;&lt;checkbox &quot;$parcom&quot; &quot;no&quot; &quot;yes&quot; &#96;$parcom ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 |Mailing list:|&lt;&lt;checkbox &quot;$parmai&quot; &quot;no&quot; &quot;yes&quot; &#96;$parmai ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 |Volunteer banks:|&lt;&lt;checkbox &quot;$parvol&quot; &quot;no&quot; &quot;yes&quot; &#96;$parvol ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 |Crowd-sourcing platforms:|&lt;&lt;checkbox &quot;$parcro&quot; &quot;no&quot; &quot;yes&quot; &#96;$parcro ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
-What preparation or training will you provide the participants with? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint23&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint23&quot; class=&quot;hidden&quot;&gt;information, training, rater agreement&lt;/div&gt;
+What preparation or training will you provide the participants with (see [[Section 5.5|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-350005.5]] for more information on participant recruitment)? &lt;&lt;click &quot;hint&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#hint23&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;div id=&quot;hint23&quot; class=&quot;hidden&quot;&gt;information, training, rater agreement&lt;/div&gt;
 &lt;&lt;textarea &quot;$partra&quot; $partra&gt;&gt;
 
 &lt;hr&gt;
@@ -637,6 +656,8 @@ What preparation or training will you provide the participants with? &lt;&lt;cli
 2) Informed consent may not be possible for WoZ studies. Appropriate procedures need to be put in place to debrief the participants after the study
 3) Given HRI is an emerging field, there are many long term consequences of the experience that are unknown. Considerations need to be given to all possible participants, from interactors such as children vulnerable groups, to the researchers participating in the study
 
+For detailed information and guidelines see [[Section 5.6|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-360005.6]] of the paper.
+
 &lt;hr&gt;
 
 Ethics approval received: &lt;&lt;checkbox &quot;$ethapp&quot; &quot;no&quot; &quot;yes&quot; &#96;$ethapp ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
@@ -649,6 +670,8 @@ Ethics approval received: &lt;&lt;checkbox &quot;$ethapp&quot; &quot;no&quot; &q
 [[Previous (Participants)-&gt;Participants]]</tw-passagedata><tw-passagedata pid="9" name="Conduct pilots to refine study design" tags="Design-phase Experiment-Phase" position="201,1300" size="200,100">&lt;h2&gt;Design Phase / Experiment Phase&lt;/h2&gt;
 &lt;h3&gt;Conduct pilots to refine study design&lt;/h3&gt;
 In addition to the careful design and planning of a research study, researchers should aim to conduct a good pilot study prior to the main study. This will help them identify critical problems and deficiencies in the study protocol as well as plan and take all the corrective actions
+
+For detailed information and guidelines see [[Section 6.1|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-430006.1]] of the paper.
 
 &lt;hr&gt;
 
@@ -704,6 +727,8 @@ the data as well as the excluded data and the reasons for exclusion
 # Small sample size studies: use the right statistical tests and visualization
 # Measurement scales
 
+For detailed information and guidelines see [[Section 6.3|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-450006.3]] of the paper.
+
 &lt;hr&gt;
 
 Small sample? &lt;&lt;checkbox &quot;$annsml&quot; &quot;no&quot; &quot;yes&quot; &#96;$annsml ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;
@@ -724,6 +749,8 @@ Researchers should not blindly apply statistical hypotheses tests, such as ANOVA
 # Confidence interval
 # Bayesian inference methods
 # Regression analysis
+
+For detailed information and guidelines see [[Section 6.4|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-490006.4]] of the paper.
 
 &lt;hr&gt;
 
@@ -755,7 +782,7 @@ Code released: &lt;&lt;checkbox &quot;$repcod&quot; &quot;no&quot; &quot;yes&quo
 |This step is not applicable to my study|&lt;&lt;checkbox &quot;$repflag&quot; &quot;&quot; &quot;not applicable&quot; &#96;$repflag ? &#39;checked&#39; : &#39;&#39;&#96;&gt;&gt;|
 
 [[Next (iterative design and follow-up studies)-&gt;Iterative design and follow-up studies]]
-[[Previous (Post-study phase)-&gt;Post study phase]]</tw-passagedata><tw-passagedata pid="15" name="Iterative design and follow-up studies" tags="Post-study-Phase" position="700,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
+[[Previous (Post-study phase)-&gt;Post study phase]]</tw-passagedata><tw-passagedata pid="15" name="Iterative design and follow-up studies" tags="Post-study-Phase" position="701,2298" size="200,100">&lt;h2&gt;Post-study Phase&lt;/h2&gt;
 &lt;h3&gt;Iterative design and follow-up studies&lt;/h3&gt;
 
 &lt;hr&gt;
@@ -769,7 +796,7 @@ Code released: &lt;&lt;checkbox &quot;$repcod&quot; &quot;no&quot; &quot;yes&quo
 Welcome to the interactive version of the HRI study methodology guidelines!
 
 This webpage will walk you through the life cycle of a typical HRI study, and list recommendations for best practice at different steps. 
-You can jump to specific steps through the map in the right side panel. You can also follow the instructions within each step. The left and right arrows on top of the left side panel will take you to the previous steps you visited or jump forward to the step you are currently at. The left and right side panels can be collapsed or expanded with the &quot;&lt;&quot; and &quot;&gt;&quot; pointers on there.
+You can jump to specific steps through the map in the right side panel. You can also follow the instructions within each step. The left and right arrows on top of the left side panel will take you to the previous steps you visited or jump forward to the step you are currently at. Your progress will be automatically saved. You can also save manually. The left and right side panels can be collapsed or expanded with the &quot;&lt;&quot; and &quot;&gt;&quot; pointers on there.
 
 Please tell us what is the title of your research proposal: 
 &lt;&lt;textbox &quot;$StudyTitle&quot; $StudyTitle&gt;&gt;
@@ -788,6 +815,8 @@ Time to move on to the experiment phase and conduct your HRI study!
 &lt;h3&gt;Recruit participants&lt;/h3&gt;
 Follow your designed methods for recruiting participants
 [[Review recruitment methods-&gt;Participants]]
+
+For detailed information and guidelines see [[Section 5.3|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-330005.3]] and [[Section 5.4|https://tianleimin.github.io/HRI-Methodology-Guidelines/main.html#x1-340005.4]] of the paper.
 
 &lt;hr&gt;
 
@@ -825,8 +854,9 @@ I. Design
 * $StudyTitle
 
 2. Hypotheses: $hypoflag
+* Research questions: $rq
+* Hypotheses: $hypo
 * Pre-registration of hypotheses: $preregisteration
-* $hypo
 
 3. Type of HRI study and study context: $contextflag
 * Level of autonomy: $HRIauto
