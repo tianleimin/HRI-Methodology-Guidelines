@@ -194,29 +194,14 @@ table.gather {width:100%;}
 div.gather-star {text-align:center;}
 .rotatebox{display: inline-block;}
 div.verbatiminput {font-family: monospace,monospace; white-space: nowrap; }
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-4 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-4{border-collapse:collapse;}
-#TBL-4 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-4{border-collapse:collapse;}
-#TBL-4 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-4{border-collapse:collapse;}
-#TBL-4 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-4{border-collapse:collapse;}
+tr#TBL-2-1- td{border-top:0.112em solid} 
+tr#TBL-2-5- td{border-bottom:0.112em solid}
+tr#TBL-3-1- td{border-top:0.112em solid} 
+tr#TBL-3-1- td{border-bottom:0.06999em solid}
+td#TBL-3-5-1{border-bottom:0.04199em solid}
+td#TBL-3-14-1{border-bottom:0.04199em solid}
+tr#TBL-3-18- td{border-bottom:0.112em solid}
+tr#TBL-4-1- td{border-top:0.112em solid} 
+tr#TBL-4-6- td{border-bottom:0.112em solid}
 /* end css.sty */
 
